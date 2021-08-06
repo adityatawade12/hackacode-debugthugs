@@ -14,7 +14,7 @@ const { MongoClient } = require('mongodb');
 const { Cookie } = require('express-session');
 
 mongoose.connect(process.env.MONGODB_URI, {
-    dbName: process.env.DB_NAME,
+    dbName: process.env.DB_NAME, 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
