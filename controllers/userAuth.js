@@ -1,6 +1,9 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/User")
 const passport = require("passport")
+const fs = require('fs');
+const driveAuth=require("../config/gdrive")
+const {google} = require('googleapis');
 
 const ensureAuthenticated=(req,res,next)=>{
     if(req.isAuthenticated()){
@@ -84,10 +87,35 @@ const currentUser=(req,res,next)=>{
     }
 }
 
+const doc=(req,res,next)=>{
+    const drive = google.drive({version: 'v3',auth:  driveAuth});
+
+    var fileMetadata = {
+        'name': 'photo.jpg'
+      };
+      var media = {
+        mimeType: 'image/jpeg',
+        body: fs.createReadStream('C:/Users/astaw/Pictures/pic.png')
+      };
+      drive.files.create({
+        resource: fileMetadata,
+        media: media,
+        fields: 'id'
+      }, function (err, file) {
+        if (err) {
+          // Handle error
+          console.error(err);
+        } else {
+          console.log('File Id: ', file.id);
+        }
+      });
+}
+
 module.exports={
     loginUser,
     registerUser,
     ensureAuthenticated,
     logoutUser,
-    currentUser
+    currentUser,
+    doc
 }
