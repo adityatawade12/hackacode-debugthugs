@@ -1,0 +1,147 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+
+    <body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><b>Tour<span style="color: black;">.ink</span></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active"
+                            style="color: rgb(49, 67, 119); border-bottom: 2px solid rgb(49, 67, 119);"
+                            aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Booking Form</a>
+                        <a class="nav-link" href="#">Category</a>
+                        <a class="nav-link" href="#">About Us</a>
+                    </div>
+                    <div class="navbar-right">
+                        <button class="btn btn-outline-light">Log In</button>
+                        <button class="btn btn-dark">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section id="image-container">
+            <div class="content">
+                <p style="color: rgb(49, 67, 119);">All you need is Tourink</p>
+                <h1 id="exp">Explore Beautiful Places</h1><br>
+                <span id="left"><i class="fas fa-arrow-circle-left"></i></span>
+                <span id="name">Lotus Temple</span>
+                <span id="right"><i class="fas fa-arrow-circle-right"></i></span>
+            </div>
+
+        </section><br><br><br><br>
+
+        <section id="search">
+            <h3>Popular Search</h3><br><br>
+
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <button class="btn btn-outline-dark btn-lg">Lotus Temple</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="download">
+            <h1>Download the <span>Tour</span>.ink app now!</h1>
+            <p>Get the latest updates and easy bookings.</p><br>
+            <button class="btn btn-dark btn-lg"><i class="fab fa-google-play"></i> Google Play</button>
+            <button class="btn btn-dark btn-lg"><i class="fab fa-apple"></i> App Store</button>
+        </section><br><br>
+
+        <div class="header">
+
+            <a href="#home">Status</a>
+            <a href="#contact">Privacy</a>
+            <a href="#about">Terms</a>
+            <a href="">Cookie Preferences</a>
+            <a href="">Contact Us</a>
+            <a href="">Change Region</a>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
+    <script>
+        var left = document.querySelector("#left")
+        var name = document.querySelector("#name")
+        var right = document.querySelector("#right")
+        left.addEventListener("click", function () {
+            var left = document.querySelector("#left")
+            var name = document.querySelector("#name")
+            var right = document.querySelector("#right")
+            if (name.innerHTML === "Lotus Temple") {
+                name.innerHTML = "Taj Mahal";
+                document.getElementById("image-container").style.backgroundImage = "url(https://4kwallpapers.com/images/wallpapers/taj-mahal-india-sunset-orange-sky-wonders-of-the-world-2048x1536-4651.jpg)"
+                document.getElementById("exp").style.color = "#333"
+            } else if (name.innerHTML === "Taj Mahal") {
+                name.innerHTML = "Lotus Temple"
+                document.getElementById("image-container").style.backgroundImage = "url(https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg)"
+                document.getElementById("exp").style.color = "#333"
+            }
+        })
+        right.addEventListener("click", function () {
+            var left = document.querySelector("#left")
+            var name = document.querySelector("#name")
+            var right = document.querySelector("#right")
+            if (name.innerHTML === "Lotus Temple") {
+                name.innerHTML = "Taj Mahal";
+                document.getElementById("image-container").style.backgroundImage = "url(https://4kwallpapers.com/images/wallpapers/taj-mahal-india-sunset-orange-sky-wonders-of-the-world-2048x1536-4651.jpg)"
+                document.getElementById("exp").style.color = "#333"
+            } else if (name.innerHTML === "Taj Mahal") {
+                name.innerHTML = "Lotus Temple"
+                document.getElementById("image-container").style.backgroundImage = "url(https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg)"
+                document.getElementById("exp").style.color = "#333"
+            }
+        })
+    </script>
+
+    </html>
