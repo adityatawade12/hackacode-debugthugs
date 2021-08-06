@@ -44,6 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 app.use("/auth",require("./routes/userAuth"))
+app.use("/NGO",require('./routes/ngo'))
 app.get('/', (req, res) => {
     res.render('landing')
 })

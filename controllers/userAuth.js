@@ -8,8 +8,6 @@ const ensureAuthenticated=(req,res,next)=>{
     }else{
         res.status(401).json({auth:false})
     }
-   
-   
 }
 
 

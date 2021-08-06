@@ -9,4 +9,4 @@ router.get("/user",currentUser)
 router.get("/logout",logoutUser)
 router.get("/isAuth",ensureAuthenticated)
 
-module.exports=router
+module.exports=router;
