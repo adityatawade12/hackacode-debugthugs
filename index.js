@@ -33,6 +33,7 @@ const sessionConfig = {
 
 
 app.use(session(sessionConfig))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,6 +42,8 @@ app.use(passport.session());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+
+app.use("/auth",require("./routes/userAuth"))
 app.get('/', (req, res) => {
     res.render('landing')
 })
@@ -52,7 +55,11 @@ app.use((err, req, res, next) => {
     if (!err.message) err.message = "Oh No Error"
     res.status(statusCode).render('error', { err });
 })
+
+
+
+
+
 app.listen(3000, () => {
     console.log("Listening on port 3000");
 })
-// 
