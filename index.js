@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express();
-const mongoose = require("mongoose");
 const path = require('path');
 const ejsMate = require('ejs-mate')
 const ejs = require('ejs')
@@ -12,19 +11,7 @@ const ExpressError = require('./utils/ExpressError')
 const { MongoClient } = require('mongodb');
 
 const { Cookie } = require('express-session');
-
-mongoose.connect(process.env.MONGODB_URI, {
-    dbName: process.env.DB_NAME, 
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-})
-    .then(() => {
-        console.log("Mongoose connection successful!!")
-    })
-    .catch((err) => {
-        console.log(`Error: ${err.message}`)
-    });
+require("./config/mongoose")
 
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')))
@@ -63,3 +50,4 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
     console.log("Listening on port 3000");
 })
+// 
