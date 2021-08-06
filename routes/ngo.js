@@ -1,8 +1,9 @@
 const express=require("express");
-const { getNjos, getparticularNgo } = require("../controllers/ngo");
-const router = express.Router()
+const { getNgos, getparticularNgo } = require("../controllers/ngo");
+const router = express.Router();
+const NGO =require('../models/Ngo');
 
-router.get('/getNgos',getNjos);
+router.get('/getNgos',getNgos);
 router.get('/getNgos/:id',getparticularNgo);
 
 module.exports=router;

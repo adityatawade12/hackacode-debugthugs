@@ -1,0 +1,25 @@
+<% layout("layouts/Boilerplate") %>
+
+    <% for( let ngo of ngos) { %>
+        <div class="card mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%= ngo.image %> " alt="Card image cap">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="card-title">
+                        <%=ngo.NGOName%>
+                    </h5>
+                    <p class="card-text">
+                        <%=ngo.description%>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <%=ngo.owner%>
+                        </small>
+                    </p>
+                    <a href="/campgrounds/<%= ngo._id %>" class="btn btn-primary">show details</a>
+                </div>
+            </div>
+        </div>
+        <% } %>
