@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate')
 const ejs = require('ejs')
+const passport=require('passport')
 require("dotenv").config();
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -12,6 +13,7 @@ const { MongoClient } = require('mongodb');
 
 const { Cookie } = require('express-session');
 require("./config/mongoose")
+require("./config/passport")(passport)
 
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')))
@@ -32,6 +34,9 @@ const sessionConfig = {
 
 app.use(session(sessionConfig))
 app.use(express.urlencoded({ extended: true }))
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
