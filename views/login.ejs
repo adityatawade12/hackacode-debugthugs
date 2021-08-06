@@ -1,0 +1,100 @@
+<!-- <section class="container">
+    <div class="span-6">
+        <div class="login">
+            <h1>Greetings!</h1>
+            <div class="login-content">
+                <label id="emailLabel">Please enter a valid email</label>
+                <input id="email" placeholder="Email" />
+                <label id="passwordLabel">Please enter your password</label>
+                <input type="password" id="password" placeholder="Password" /><br>
+                <a href="#">Forgot Username </a>&#x2022<a href="#"> Forgot Password</a><br>
+
+                <input type="submit" value="Login">
+
+            </div>
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="message">
+            <span class="first">Design</span>
+            <span class="second">is</span>
+            <span class="third">Everywhere</span>
+        </div>
+</section> -->
+
+<link rel="stylesheet" href="stylesheets/login.css">
+
+
+<body>
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#E8DAFF"
+            d="M48.3,-49.2C56.3,-40.3,52.1,-20.2,52.5,0.3C52.8,20.8,57.6,41.6,49.6,48C41.6,54.3,20.8,46.2,0.1,46.1C-20.6,45.9,-41.2,53.8,-54.2,47.5C-67.2,41.2,-72.7,20.6,-67.5,5.2C-62.4,-10.3,-46.6,-20.5,-33.6,-29.4C-20.5,-38.3,-10.3,-45.9,4.9,-50.8C20.2,-55.8,40.3,-58.1,48.3,-49.2Z"
+            transform="translate(100 100)" />
+    </svg>
+    <section class="container" id="container">
+        <div class="span-6">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <!-- <label for="type">Choose a role:</label> -->
+
+                    <select name="type" id="type">
+                        <option value="user" selected>User</option>
+                        <option value="volunteer">Volunteer</option>
+                        <option value="NGO">NGO</option>
+                    </select>
+                    <button>Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <a href="#">Forgot your password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- <div class="span-6">
+        <div class="message">
+            <span class="first">Design</span>
+            <span class="second">is</span>
+            <span class="third">Everywhere</span>
+        </div>
+    </div> -->
+
+</body>
+<script src="javascripts/login.js"></script>
