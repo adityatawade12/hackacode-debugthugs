@@ -56,9 +56,13 @@ const registerUser=(req,res,next)=>{
 
                         newUser.save()
                         .then(user=>{
-                            
+                             req.logIn(user,err=>{
+                                if (err) res.status(500).json({msg:"there was an error",userData:{}})
+                                res.status(200).json({msg:"Successfully login",userData:user})
+                            })
                             // req.flash('success_msg',"you are now registered")
-                            res.status(200).json({msg:"Successfully registered",userData:user})})
+                            // res.status(200).json({msg:"Successfully registered",userData:user})
+                        })
                         .catch(err=>{
                             console.log(err)
                             res.status(500).json({msg:"there was an error",userData:{}})
