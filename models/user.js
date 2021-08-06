@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.model;
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     email: {
@@ -18,6 +18,10 @@ const UserSchema = new Schema({
     type: {
         type: String,
         required: true
+    },
+    profilePic:{
+        type:String,
+        default:''
     }
 })
 
