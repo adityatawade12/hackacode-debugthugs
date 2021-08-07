@@ -33,7 +33,16 @@ const addVolunteer = async (req, res) => {
 
 
 }
-
+const FindVolunteer = async (req, res) => {
+    console.log(req.user._id)
+    Volunteer.findById({ _id: req.user._id }).then(volunteer => {
+        console.log(volunteer);
+        console.log(req.body);
+        res.render('volunteers/profile', { volunteer: volunteer })
+    }).catch(err => {
+        console.log(err);
+    })
+}
 const submitApplication = (req, res) => {
     console.log(req.body.NGOid);
     NGO.findOne({ _id: req.body.NGOid }).
@@ -62,7 +71,8 @@ const submitApplication = (req, res) => {
 
 module.exports = {
     addVolunteer,
-    submitApplication
+    submitApplication,
+    FindVolunteer,
 }
 
 // NGO.findOneAndUpdate({userId:req.userId},
