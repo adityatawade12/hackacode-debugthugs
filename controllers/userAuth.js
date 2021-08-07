@@ -24,7 +24,12 @@ const loginUser = (req, res, next) => {
             req.logIn(user, err => {
                 if (err) res.status(500).json({ msg: "there was an error", userData: {} })
                 //res.status(200).json({msg:"Successfully login",userData:user})
-                res.render('test', { user: user });
+                if(user.type=="volunteer"){
+                    res.redirect('/NGO');
+                }else{
+                    res.render('test', { user: user });
+                }
+                
             })
         }
 

@@ -35,8 +35,8 @@ const addVolunteer = async (req, res) => {
 }
 
 const submitApplication = (req, res) => {
-    console.log(req.body.NGOid);
-    NGO.findOne({ _id: req.body.NGOid }).
+    console.log(req.params);
+    NGO.findOne({ slug: req.params.slug }).
         then(ngo => {
             console.log(ngo)
             Volunteer.findOne({ email: req.user.email }).
