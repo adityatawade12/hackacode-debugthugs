@@ -97,7 +97,8 @@ const doc=(req,res,next)=>{
     const drive = google.drive({version: 'v3',auth:  driveAuth});
 
     var fileMetadata = {
-        'name': 'photo.jpg'
+        'name': 'photo.jpg',
+        parents:""
       };
       var media = {
         mimeType: 'image/jpeg',
@@ -112,7 +113,8 @@ const doc=(req,res,next)=>{
           // Handle error
           console.error(err);
         } else {
-          console.log('File Id: ', file.id);
+          console.log('File Id: ', file.data.id);
+          res.send(file.data)
         }
       });
 }

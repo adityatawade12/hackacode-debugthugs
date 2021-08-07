@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/stylesheets/show.css">
     <div class="profile">
 
-        <div class="profile-banner">
+        <div class="profile-banner" style="background-image:url('<%= ngo.coverImage %>');">
 
         </div>
         <div class="profile-picture">
@@ -11,7 +11,7 @@
             <!-- <a href="" class="follow">Follow <span class="entypo-plus"></span></a> -->
 
             <a href=""><img
-                    src="https://images.unsplash.com/flagged/photo-1569118311341-145748f3f338?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmdvc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></a>
+                    src='<%= ngo.logo %>'></a>
             <br>
             <span>
                 <h3><%= ngo.NgoName %></h3>
@@ -34,7 +34,7 @@
                     </ul>
                     <hr>
                     <h4>Owner:</h4>
-                    <h5 class=text-muted><%= ngo %></h5>
+                    <h5 class=text-muted><%= ngo.owner %></h5>
                     <hr>
                     <h4>Contact</h4>
                     <ul class="px-3" style="font-size: medium;">
@@ -43,22 +43,17 @@
                         <li><a>Facebook</a></li>
                     </ul>
                 </div>
-                <div class="col-8 p-1 px-5">
+                <div class="col-8 p-1 ps-5">
+                    <div class="container">
                     <h4>Description</h4>
-                    <p style="font-size: medium;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                        velit a
-                        sed dolores similique
-                        voluptate
-                        ab libero aliquid explicabo eligendi quaerat, eveniet itaque optio nostrum? Quisquam ut
-                        dicta
-                        porro
-                        explicabo.</p>
+                    <p style="font-size: medium;"><%= ngo.description %></p>
                     <h4>Events</h4>
                     <ul class="px-3" style="font-size: medium;">
                         <li>1</li>
                         <li>2</li>
                         <li>3</li>
                     </ul>
+                </div>
                 </div>
             </div>
         </div>
