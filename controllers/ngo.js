@@ -193,6 +193,20 @@ const removeImage=(req,res)=>{
         }) 
 }
 
+const deleteEvent=(req,res)=>{
+
+    NGO.findOneAndUpdate({_id:req.ngoId},
+        {$pull : {events: req.params.id}},
+        {new: true})
+        .then(async ngo => {
+           await NgoEvent.deleteOne({_id:req.params.id})
+            res.redirect("/NGO/events")
+        }).catch(err=>{
+            console.log("err",err)
+            res.status(500).json(err);
+        }) 
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -207,5 +221,6 @@ module.exports = {
     renderEditEventPage,
     addImage,
     removeImage,
-    updateEvent
+    updateEvent,
+    deleteEvent
 }
