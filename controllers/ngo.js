@@ -63,11 +63,20 @@ const addVolunteer = (req,res) => {
         }) 
 }
 
+const updateVolunteer = (req,res) => {
+    Volunteer.findOneAndUpdate({_id:req.body.voluteerId},req.body,{new:true})
+    .then(volunteer => {
+        res.status(200).json(volunteer);
+    }).catch(err=>{
+        res.status(500).json(err);
+    })
+}
 
 module.exports = {
     getNgos,
     getparticularNgo,
     addEvent,
     createNgo,
-    addVolunteer
+    addVolunteer,
+    updateVolunteer
 }
