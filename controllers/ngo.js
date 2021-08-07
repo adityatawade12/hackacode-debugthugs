@@ -90,6 +90,15 @@ const addEvent = (req,res) => {
         })
 }
 
+const getNgoEvents = (req,res) =>{
+    NGO.findOne({userId:req.userId}).populate('events')
+    .then(events=>{
+        res.status(200).json(events);
+    }).catch(err=>{
+        res.status(500).json(err);
+    });
+}
+
 const addVolunteer = (req,res) => {
     const newVolunteer = new Volunteer({...req.body});
     const volunteerId = newVolunteer._id;
@@ -104,6 +113,14 @@ const addVolunteer = (req,res) => {
         }) 
 }
 
+const updateVolunteer = (req,res) => {
+    Volunteer.findOneAndUpdate({_id:req.body.voluteerId},req.body,{new:true})
+    .then(volunteer => {
+        res.status(200).json(volunteer);
+    }).catch(err=>{
+        res.status(500).json(err);
+    })
+}
 
 module.exports = {
     getNgos,
@@ -111,5 +128,7 @@ module.exports = {
     addEvent,
     createNgo,
     addVolunteer,
-    editNgo
+    updateVolunteer,
+    editNgo,
+    getNgoEvents
 }
