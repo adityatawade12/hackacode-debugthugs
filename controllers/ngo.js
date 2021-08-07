@@ -13,7 +13,7 @@ const getNgos=(req,res)=>{
 }
 
 const getparticularNgo = (req,res) => {
-    NGO.find({_id:req.params.id}).
+    NGO.findOne({slug:req.params.slug}).
     then(ngo=>{
         res.status(200).json(ngo)
     })
@@ -23,7 +23,10 @@ const getparticularNgo = (req,res) => {
 }
 
 const createNgo = (req,res) => {
-    const newNgo = new NGO({...req.body.data,userId:req.userId});
+    console.log(req.body)
+    const coverImg=req.files.cover[0].fileId
+    const profileImg=req.files.profile[0].fileId
+    const newNgo = new NGO({...req.body,userId:req.userId,owner:req.user.name,coverImage: 'https://drive.google.com/thumbnail?id='+coverImg,logo: 'https://drive.google.com/thumbnail?id='+profileImg});
     console.log(newNgo);
     newNgo.save().then(ngo=>{
         res.status(200).json(ngo);
@@ -46,6 +49,7 @@ const addEvent = (req,res) => {
             res.status(500).json(err);
         })
 }
+
 
 
 
