@@ -23,7 +23,7 @@ const getparticularNgo = (req,res) => {
 }
 
 const createNgo = (req,res) => {
-    const newNgo = new NGO({...req.body.data,userId:req.userId});
+    const newNgo = new NGO({...req.body,userId:req.userId});
     console.log(newNgo);
     newNgo.save().then(ngo=>{
         res.status(200).json(ngo);
@@ -33,8 +33,7 @@ const createNgo = (req,res) => {
 }
 
 const addEvent = (req,res) => {
-    console.log(req.body);
-    const newEvent = new NgoEvent({...req.body.data});
+    const newEvent = new NgoEvent({...req.body});
     const eventId = newEvent._id;
     newEvent.save();
     NGO.findOneAndUpdate({userId:req.userId},
@@ -47,11 +46,24 @@ const addEvent = (req,res) => {
         })
 }
 
-
+const addVolunteer = (req,res) => {
+    const newVolunteer = new Volunteer({...req.body});
+    const volunteerId = newVolunteer._id;
+    newVolunteer.save();
+    NGO.findOneAndUpdate({userId:req.userId},
+        {$push : {volunteers:volunteerId}},
+        {new: true},)
+        .then(ngo => {
+            res.status(200).json(ngo);
+        }).catch(err=>{
+            res.status(500).json(err);
+        }) 
+}
 
 module.exports = {
     getNgos,
     getparticularNgo,
     addEvent,
-    createNgo
+    createNgo,
+    addVolunteer
 }
