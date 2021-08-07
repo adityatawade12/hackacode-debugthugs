@@ -50,13 +50,13 @@ app.get('/', (req, res) => {
 })
 app.get('/login', (req, res) => {
     let type = req.query['type']
-    res.render('login',{type})
+    res.render('login', { type })
 })
 
 app.get('/show', (req, res) => {
     res.render('ngos/show')
 })
-
+app.get('/apply', (req, res) => { res.render('ngos/applyngo') })
 app.get('/dashboard', (req, res) => {
     res.render('ngos/dashboard.ejs')
 })
@@ -92,7 +92,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-app.get('*', (req,res)=>{
+app.get('*', (req, res) => {
     res.render('pageNotFound');
 })
 
