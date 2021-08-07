@@ -49,6 +49,7 @@ body,
 
 .card::before,
 .card::after {
+
   content: '';
   position: absolute;
   z-index: -1;
