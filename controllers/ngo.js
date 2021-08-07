@@ -13,9 +13,9 @@ const getNgos=(req,res)=>{
 }
 
 const getparticularNgo = (req,res) => {
-    NGO.find({_id:req.params.id}).
+    NGO.findOne({_id:req.params.id}).
     then(ngo=>{
-        res.status(200).json(ngo)
+        res.render("ngos/show",{ ngo : ngo })
     })
     .catch(err=>{
         res.status(500).json(err)

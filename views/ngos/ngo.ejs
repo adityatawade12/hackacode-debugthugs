@@ -1,25 +1,47 @@
 <% layout("layouts/Boilerplate") %>
-
-    <% for( let ngo of ngos) { %>
-        <div class="card mb-4">
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-fluid" src="<%= ngo.image %> " alt="Card image cap">
-                </div>
-                <div class="col-md-8">
-                    <h5 class="card-title">
-                        <%=ngo.NGOName%>
-                    </h5>
-                    <p class="card-text">
-                        <%=ngo.description%>
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            <%=ngo.owner%>
-                        </small>
-                    </p>
-                    <a href="/campgrounds/<%= ngo._id %>" class="btn btn-primary">show details</a>
-                </div>
-            </div>
+    <link rel="stylesheet" href="stylesheets/ngo.css">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <h1>NGO'S</h1>
         </div>
-        <% } %>
+        <div class="row mt-3">
+            <% for( let ngo of ngos) { %>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div class="card" style="width: 20rem;box-shadow: 7px 7px 24px -9px rgba(0,0,0,0.68);
+                    -webkit-box-shadow: 7px 7px 24px -9px rgba(0,0,0,0.68);
+                    -moz-box-shadow: 7px 7px 24px -9px rgba(0,0,0,0.68);">
+                        <div class="container-fluid px-3 pt-3">
+                            <img class="card-img-top"
+                                src="https://images.unsplash.com/flagged/photo-1569118311341-145748f3f338?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmdvc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <%=ngo.NgoName%>
+                            </h3>
+                            <h5 class="text-muted">
+                                <%=ngo.owner%>
+                            </h5>
+
+                            <p class="card-text">
+                                <%= ngo.description %>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Events- <%= ngo.events.length %>
+                            </li>
+
+
+                        </ul>
+                        <div class="card-body">
+                            <a href="/NGO/<%= ngo._id %>" class="card-link"><button class="btn btn-success"
+                                    style="border: 1px solid black;">Show
+                                    Details</button></a>
+                            <!-- <a href="#" class="card-link">Another link</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <% } %>
+        </div>
+    </div>
