@@ -1,3 +1,26 @@
+<style>
+    .navbar-brand {
+        color: rgb(49, 67, 119);
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.15rem;
+    }
+
+    .nav-link {
+        color: gray;
+        padding-right: 50px;
+    }
+
+    .navbar-nav {
+        margin: auto;
+    }
+
+    .navbar {
+        margin-left: 8%;
+    }
+</style>
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><b>Tour<span style="color: black;">.ink</span></b></a>
@@ -9,13 +32,12 @@
             <div class="navbar-nav">
                 <a class="nav-link active" style="color: rgb(49, 67, 119); border-bottom: 2px solid rgb(49, 67, 119);"
                     aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Booking Form</a>
-                <a class="nav-link" href="#">Category</a>
-                <a class="nav-link" href="#">About Us</a>
+
+                <a class="nav-link" href="#AboutUs">About Us</a>
             </div>
             <div class="navbar-right">
-                <a href="/login"><button class="btn btn-outline-light">Log In</button></a>
-                <a href="/login"></a><button class="btn btn-dark">Sign Up</button></a>
+                <a href="/login"><button class="btn btn-light">Log In</button></a>
+                <a href="#SignUp" style="text-decoration: none;"><button class="btn btn-dark">Sign Up</button></a>
             </div>
         </div>
     </div>
