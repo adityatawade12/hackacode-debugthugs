@@ -23,7 +23,8 @@ const loginUser=(req,res,next)=>{
         else{
             req.logIn(user,err=>{
                 if (err) res.status(500).json({msg:"there was an error",userData:{}})
-                res.status(200).json({msg:"Successfully login",userData:user})
+                //res.status(200).json({msg:"Successfully login",userData:user})
+                res.render('test',{ user : user });
             })
         }
         
@@ -58,7 +59,8 @@ const registerUser=(req,res,next)=>{
                         .then(user=>{
                              req.logIn(user,err=>{
                                 if (err) res.status(500).json({msg:"there was an error",userData:{}})
-                                res.status(200).json({msg:"Successfully login",userData:user})
+                                //res.status(200).json({msg:"Successfully login",userData:user})
+                                res.render('test',{ user : user });
                             })
                             // req.flash('success_msg',"you are now registered")
                             // res.status(200).json({msg:"Successfully registered",userData:user})
