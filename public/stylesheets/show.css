@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap');
+
+/* [class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+} */
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile{
+  height:1200px;
+  width:1200px;
+  margin:0 auto;
+  border-radius:10px;
+}
+
+.profile-banner{
+  height:35%;
+  width:100%;
+  background-image:url('https://picsum.photos/seed/picsum/1000/520');
+  background-size:100%;
+  border-radius:10px;
+}
+
+.profile-picture{
+  height:250px;
+  width:250px;
+  border-radius:50%;
+  margin: 0 auto;
+  position:relative;
+  top:-175px;
+  text-align:center;
+  border:10px solid #fff;
+}
+
+.profile-picture span{
+  font-size:20pt;
+}
+
+.profile-picture small{
+  font-size:13pt;
+  color:#cacaca;
+}
+
+.profile-picture img{
+  border-radius:50%;
+  height:100%;
+  width:100%;
+}
+
+.apply{
+  width:90px;
+  /* position:absolute;
+  left:-130px;
+  top:100px; */
+  /* background:#00A9FA; */
+  padding:5px;
+  border-radius:10px;
+  font-size:13pt;
+  text-decoration:none;
+  color:#fff;
+  transition:0.5s;
+}
+
+.follow{
+  width:70px;
+  position:absolute;
+  margin-left:180px;
+  top:100px;
+  background:#00A9FA;
+  padding:5px;
+  border-radius:10px;
+  font-size:13pt;
+  text-decoration:none;
+  color:#fff;
+  transition:0.5s;
+}
+
+.follow span{
+  font-size:13pt;
+}
+
+.apply span{
+  font-size:13pt;
+}
+
+.follow:hover{
+  transition:0.5s;
+  background:#0079FA;
+}
+
+.apply:hover{
+  transition:0.5s;
+  background:#0079FA;
+}
+
+.profile-content{
+  height:60%;
+  width:100%;
+}
+
+.profile-content div{
+  float:left;
+}

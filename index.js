@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate')
 const ejs = require('ejs')
-const passport=require('passport')
+const passport = require('passport')
 require("dotenv").config();
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -43,13 +43,16 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.use("/auth",require("./routes/userAuth"))
-app.use("/NGO",require('./routes/ngo'))
+app.use("/auth", require("./routes/userAuth"))
+app.use("/NGO", require('./routes/ngo'))
 app.get('/', (req, res) => {
     res.render('landing')
 })
 app.get('/login', (req, res) => {
     res.render('login')
+})
+app.get('/show', (req, res) => {
+    res.render('ngos/show')
 })
 
 

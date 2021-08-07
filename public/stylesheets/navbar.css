@@ -1,0 +1,22 @@
+
+.navbar-brand {
+    color: rgb(49, 67, 119);
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.15rem;
+}
+
+.nav-link {
+    color: gray;
+    padding-right: 50px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar {
+    margin-left: 8%;
+}
