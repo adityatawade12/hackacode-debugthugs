@@ -1,6 +1,7 @@
 const NGO = require('../models/Ngo');
 const NgoEvent = require('../models/Events');
 const Volunteer = require('../models/Volunteers');
+const Applications = require("../models/Applications");
 
 const getNgos=(req,res)=>{
     NGO.find({}).
@@ -99,18 +100,13 @@ const getNgoEvents = (req,res) =>{
     });
 }
 
-const addVolunteer = (req,res) => {
-    const newVolunteer = new Volunteer({...req.body});
-    const volunteerId = newVolunteer._id;
-    newVolunteer.save();
-    NGO.findOneAndUpdate({userId:req.userId},
-        {$push : {volunteers:volunteerId}},
-        {new: true},)
-        .then(ngo => {
-            res.status(200).json(ngo);
-        }).catch(err=>{
-            res.status(500).json(err);
-        }) 
+const getNgoVolunteer = (req,res) =>{
+    NGO.findOne({userId:req.userId}).populate('volunteers')
+    .then(vol => {
+        res.status(200).json(vol);
+    }).catch(err=>{
+        res.status(500).json(err);
+    })
 }
 
 const updateVolunteer = (req,res) => {
@@ -127,8 +123,8 @@ module.exports = {
     getparticularNgo,
     addEvent,
     createNgo,
-    addVolunteer,
     updateVolunteer,
     editNgo,
-    getNgoEvents
+    getNgoEvents,
+    getNgoVolunteer
 }
