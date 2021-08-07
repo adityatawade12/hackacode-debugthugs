@@ -57,18 +57,44 @@ app.get('/show', (req, res) => {
     res.render('ngos/show')
 })
 
-
-app.all("*", (req, res, next) => {
-    next(new ExpressError("Page not found", 404));
+app.get('/dashboard', (req, res) => {
+    res.render('ngos/dashboard.ejs')
 })
+
+app.get('/icons', (req, res) => {
+    res.render('ngos/icons.ejs')
+})
+app.get('/map', (req, res) => {
+    res.render('ngos/map.ejs')
+})
+app.get('/notifications', (req, res) => {
+    res.render('ngos/notifications.ejs')
+})
+app.get('/tables', (req, res) => {
+    res.render('ngos/tables.ejs')
+})
+app.get('/typography', (req, res) => {
+    res.render('ngos/typography.ejs')
+})
+app.get('/upgrade', (req, res) => {
+    res.render('ngos/upgrade.ejs')
+})
+app.get('/user', (req, res) => {
+    res.render('ngos/user.ejs')
+})
+
+// app.all("*", (req, res, next) => {
+//     next(new ExpressError("Page not found", 404));
+// })
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
     if (!err.message) err.message = "Oh No Error"
     res.status(statusCode).render('error', { err });
 })
 
-
-
+app.get('*', (req,res)=>{
+    res.render('pageNotFound');
+})
 
 
 app.listen(3000, () => {
