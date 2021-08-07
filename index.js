@@ -46,6 +46,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use("/auth", require("./routes/userAuth"))
 app.use("/NGO", require('./routes/ngo'))
+app.use("/volunteer", require('./routes/volunteer'))
+
 app.get('/', (req, res) => {
     res.render('landing')
 })
@@ -55,10 +57,11 @@ app.get('/login', async (req, res) => {
     res.render('login', { type })
 })
 
-app.get('/show', (req, res) => {
-    res.render('ngos/show')
+
+app.get('/apply', (req, res) => { 
+    res.render('ngos/applyngo') 
 })
-app.get('/apply', (req, res) => { res.render('ngos/applyngo') })
+
 app.get('/dashboard', (req, res) => {
     res.render('ngos/dashboard.ejs')
 })

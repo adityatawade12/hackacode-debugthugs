@@ -32,14 +32,16 @@
                 </form> -->
             </div>
             <div class="form-container sign-in-container">
-                <form action="/:id/apply" method="POST">
-                    <h3 class="mb-4">Personal Details</h3>
+
+                <form action="/volunteer/registerVolunteer" method="POST">
+                    <h3 class="mb-4">Additional Info</h3>
                     <!-- <p>Enter your phone number:</p> -->
-                
-                    <textarea name="capacity" id="cap" placeholder="In which capacity do u wanna join?" rows="2" cols="14"></textarea>
-                    <textarea name="motivation" id="mot" placeholder="What is your motivation to join our NGO" rows="2" cols="14"></textarea>
-                    
-                    <button class="mt-4">Apply</button>
+                    <input id="phone" type="tel" name="phone" placeholder="phone-no" />
+                    <!-- <input type="submit" class="btn" value="Verify" /> -->
+                    <textarea name="bio" id="bio" placeholder="Enter bio." row="2" cols="10"></textarea>
+                    <!-- <input type="password" name="password" placeholder="Password" /> -->
+                    <textarea name="address" id="address" placeholder="Enter address." row="2" cols="10"></textarea>
+                    <button class="mt-4">Finish</button>
                 </form>
             </div>
             <div class="overlay-container">
@@ -51,7 +53,7 @@
                     </div> -->
                     <div class="overlay-panel overlay-right">
                         <h1>Hello, Friend!</h1>
-                        <p>Please enter your details.</p>
+                        <p>You are almost there.</p>
                         <a href="/NGOS/:id"><button class="ghost" id="Back">Back</button></a>
                     </div>
                 </div>

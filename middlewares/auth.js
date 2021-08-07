@@ -1,3 +1,4 @@
+const NGO = require('../models/Ngo');
 const isLoggedin=(req,res,next)=>{
     if(req.isAuthenticated()){
         next()
@@ -15,9 +16,11 @@ const isUser=(req,res,next)=>{
 }
 
 
-const isNGO=(req,res,next)=>{
+const isNGO=async(req,res,next)=>{
     if(req.user.type=="ngo"){
         console.log(req.user._id);
+       const ngo=await NGO.findOne({userId:req.user._id})
+       req.ngoId=ngo._id
         req.userId = req.user._id;
         next()
     }else{
