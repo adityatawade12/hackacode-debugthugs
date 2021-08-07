@@ -10,6 +10,7 @@ const flash = require('connect-flash')
 const methodOverride = require('method-override')
 const ExpressError = require('./utils/ExpressError')
 const { MongoClient } = require('mongodb');
+const { search } = require('./controllers/search')
 
 const { Cookie } = require('express-session');
 require("./config/mongoose")
@@ -48,8 +49,9 @@ app.use("/NGO", require('./routes/ngo'))
 app.get('/', (req, res) => {
     res.render('landing')
 })
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
     let type = req.query['type']
+    const s = await search();
     res.render('login', { type })
 })
 
