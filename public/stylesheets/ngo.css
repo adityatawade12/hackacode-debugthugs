@@ -49,6 +49,7 @@ body,
 
 .card::before,
 .card::after {
+
   content: '';
   position: absolute;
   z-index: -1;
@@ -141,4 +142,8 @@ body,
   .links button {
     min-width: 100px;
   }
+<<<<<<< HEAD
 } */
+=======
+}
+>>>>>>> a98c7543871091b091f85b1e154ce7c375bd4dea
