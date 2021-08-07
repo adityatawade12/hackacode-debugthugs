@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+const imageSchema=new Schema({
+    name:{
+        type:String
+    },
+    link:{
+        type:String
+    }
+})
+
 const EventSchema = new Schema({
     name:{
         type:String,
@@ -20,7 +30,7 @@ const EventSchema = new Schema({
     },
     eventImage:[
         {
-            type:String,
+            type:imageSchema,
             default:''
         }
     ],

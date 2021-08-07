@@ -140,16 +140,57 @@ const renderEventPage= (req, res) => {
     res.render('ngos/events')
 }
 
-const renderEditEventPage= (req, res) => {
-    res.render('ngos/editEvent.ejs')
+const renderEditEventPage= async(req, res) => {
+    const data1=await NgoEvent.findOne({_id:req.params.id})
+    var data={...data1}
+    st=data1.startDate.toISOString().slice(0,10)
+    data.startDate=data1.startDate.toISOString().slice(0,10)
+    data.endDate=data1.endDate.toISOString().slice(0,10)
+    console.log(data)
+    res.render('ngos/editEvent.ejs',{data:data1})
+}
+
+const updateEvent=(req,res)=>{
+    console.log("------------------------------------------------")
+    console.log(req.body)
+    NgoEvent.findOneAndUpdate({_id:req.params.id},{...req.body})
+    .then(event=>{
+        res.redirect("/NGO/events/"+req.params.id+"/edit")
+    }).catch(err=>{
+        res.redirect("/NGO/events")
+    })
 }
 
 const renderCreateEventPage=(req,res)=>{
+    
     res.render('ngos/createEvent.ejs')
 }
 
-const renderViewEventPage=(req,res)=>{
-    res.render('ngos/viewEvent.ejs')
+const addImage=async(req,res)=>{
+    console.log(req.file,req.body)
+    imgObj={
+        name:req.file.originalname,
+        link:'https://drive.google.com/thumbnail?id='+req.file.fileId
+    }
+    NgoEvent.findOneAndUpdate({_id:req.body.id},{$push : {eventImage: imgObj}},{new:true})
+    .then(event=>{
+        res.send(event)
+    })
+    .catch(err=>{res.send(err)})
+
+}
+const removeImage=(req,res)=>{
+    console.log(req.body.link,"sahdsajk")
+    // console.log(JSON.parse(req.body))
+    NgoEvent.findOneAndUpdate({_id:req.body.id},
+        {$pull : {eventImage: {link:req.body.link}}},
+        {new: true})
+        .then(ngo => {
+            res.status(200).json(ngo);
+        }).catch(err=>{
+            console.log("err",err)
+            res.status(500).json(err);
+        }) 
 }
 
 module.exports = {
@@ -163,5 +204,8 @@ module.exports = {
     getNgoEvents,
     renderEventPage,
     renderCreateEventPage,
-    renderEditEventPage
+    renderEditEventPage,
+    addImage,
+    removeImage,
+    updateEvent
 }
