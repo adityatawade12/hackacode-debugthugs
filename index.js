@@ -49,7 +49,8 @@ app.get('/', (req, res) => {
     res.render('landing')
 })
 app.get('/login', (req, res) => {
-    res.render('login')
+    let type = req.query['type']
+    res.render('login',{type})
 })
 app.get('/show', (req, res) => {
     res.render('ngos/show')
