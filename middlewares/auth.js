@@ -17,6 +17,8 @@ const isUser=(req,res,next)=>{
 
 const isNGO=(req,res,next)=>{
     if(req.user.type=="ngo"){
+        console.log(req.user._id);
+        req.userId = req.user._id;
         next()
     }else{
         res.send("no ngo")

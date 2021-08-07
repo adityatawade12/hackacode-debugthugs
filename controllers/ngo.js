@@ -22,7 +22,36 @@ const getparticularNgo = (req,res) => {
     })
 }
 
+const createNgo = (req,res) => {
+    const newNgo = new NGO({...req.body.data,userId:req.userId});
+    console.log(newNgo);
+    newNgo.save().then(ngo=>{
+        res.status(200).json(ngo);
+    }).catch(err=>{
+        res.status(500).json(err);
+    })
+}
+
+const addEvent = (req,res) => {
+    console.log(req.body);
+    const newEvent = new NgoEvent({...req.body.data});
+    const eventId = newEvent._id;
+    newEvent.save();
+    NGO.findOneAndUpdate({userId:req.userId},
+        {$push : {events: eventId}},
+        {new: true},)
+        .then(ngo => {
+            res.status(200).json(ngo);
+        }).catch(err=>{
+            res.status(500).json(err);
+        })
+}
+
+
+
 module.exports = {
     getNgos,
-    getparticularNgo
+    getparticularNgo,
+    addEvent,
+    createNgo
 }

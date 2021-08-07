@@ -12,7 +12,7 @@ const NgoSchema = new Schema({
     },
     owner:{
         type:String,
-        required:true
+        default:''
     },
     events:[
         {
@@ -25,7 +25,11 @@ const NgoSchema = new Schema({
             type:Schema.Types.ObjectId,
             ref:'Volunteer'
         }
-    ]
+    ],
+    userId:{
+        type:String,
+        required:true
+    }
 });
 
 const NGO = new mongoose.model("NGO",NgoSchema);
