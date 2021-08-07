@@ -76,15 +76,18 @@ const editNgo = async(req,res) => {
     .catch(err=>{res.send(err)})
 }
 
-const addEvent = (req,res) => {
-    const newEvent = new NgoEvent({...req.body});
+const addEvent = async(req,res) => {
+    const ngo=await NGO.findOne({_id:req.ngoId})
+    const img=ngo.logo
+    const newEvent = new NgoEvent({...req.body,logo:img});
     const eventId = newEvent._id;
-    newEvent.save();
+    await newEvent.save();
     NGO.findOneAndUpdate({userId:req.userId},
         {$push : {events: eventId}},
         {new: true},)
         .then(ngo => {
-            res.status(200).json(ngo);
+            res.redirect("/NGO/events")
+            // res.status(200).json(ngo);
         }).catch(err=>{
             res.status(500).json(err);
         })
@@ -92,8 +95,18 @@ const addEvent = (req,res) => {
 
 const getNgoEvents = (req,res) =>{
     NGO.findOne({userId:req.userId}).populate('events')
-    .then(events=>{
-        res.status(200).json(events);
+    .then(data=>{
+        const e=data.events
+        var eventC=[]
+        var eventP=[]
+        e.forEach(element => {
+            if(element.endDate<Date.now()){
+                eventP.push(element)
+            }else{
+                eventC.push(element)
+            }
+        });
+        res.render("ngos/events",{eventsC:eventC,eventsP:eventP})
     }).catch(err=>{
         res.status(500).json(err);
     });
@@ -122,6 +135,23 @@ const updateVolunteer = (req,res) => {
     })
 }
 
+const renderEventPage= (req, res) => {
+    console.log("here")
+    res.render('ngos/events')
+}
+
+const renderEditEventPage= (req, res) => {
+    res.render('ngos/editEvent.ejs')
+}
+
+const renderCreateEventPage=(req,res)=>{
+    res.render('ngos/createEvent.ejs')
+}
+
+const renderViewEventPage=(req,res)=>{
+    res.render('ngos/viewEvent.ejs')
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -130,5 +160,8 @@ module.exports = {
     addVolunteer,
     updateVolunteer,
     editNgo,
-    getNgoEvents
+    getNgoEvents,
+    renderEventPage,
+    renderCreateEventPage,
+    renderEditEventPage
 }

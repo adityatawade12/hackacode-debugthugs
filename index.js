@@ -54,6 +54,7 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/show', (req, res) => {
+    console.log("zzzz")
     res.render('ngos/show')
 })
 
@@ -67,9 +68,15 @@ app.get('/icons', (req, res) => {
 app.get('/map', (req, res) => {
     res.render('ngos/map.ejs')
 })
-app.get('/notifications', (req, res) => {
-    res.render('ngos/notifications.ejs')
+app.get('/events', (req, res) => {
+    res.render('ngos/events.ejs')
 })
+// app.get('/events/view', (req, res) => {
+//     res.render('ngos/viewEvent.ejs')
+// })
+// app.get('/events/create', (req, res) => {
+//     res.render('ngos/createEvent.ejs')
+// })
 app.get('/tables', (req, res) => {
     res.render('ngos/tables.ejs')
 })
