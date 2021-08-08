@@ -1,0 +1,83 @@
+<% layout("layouts/boilerplate") %>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <div class="profile">
+
+        <div class="profile-banner" style="background-image:url('<%= ngo.coverImage %>');">
+
+        </div>
+        <div class="profile-picture">
+
+
+            <!-- <a href="" class="follow">Follow <span class="entypo-plus"></span></a> -->
+
+            <a href=""><img src='<%= ngo.logo %>'></a>
+            <br>
+            <span>
+                <h3>
+                    <%= ngo.NgoName %>
+                </h3>
+
+            </span>
+            <br>
+
+            <span><button class="apply btn btn-success" style="width: 10em;"><a href="/volunteer/apply/<%= ngo.slug %>">Apply</a></button></span>
+
+
+        </div>
+        <div class="container my-0 py-0">
+            <div class="row">
+                <div class="col-4 p-1">
+                    <h4>Upcoming Events:</h4>
+                    <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul>
+                    <hr>
+                    <h4>Owner:</h4>
+                    <h5 class=text-muted>
+                        <%= ngo.owner %>
+                    </h5>
+                    <hr>
+                    <h4>Contact</h4>
+                    <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="col-8 p-1 ps-5">
+                    <div class="container">
+                        <h4>Description</h4>
+                        <p style="font-size: medium;">
+                            <%= ngo.description %>
+                        </p>
+                        <h4>Events</h4>
+                        <div class="container">
+                            <div class="row">
+                                <% for(let event of ngo.events) {%>
+                                    <div class="col-6">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src=`<%=event.image %>`
+                                            class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h3 class="card-title">
+                                                    <%= event.name %>
+                                                </h3>
+                                                <p class="card-text">
+                                                    <%= event.eventInfo %>
+                                                </p>
+                                                <h5 class="text-muted">
+                                                    <%= event.startDate %>-<%=event.endDate%>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

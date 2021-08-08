@@ -1,0 +1,122 @@
+<style>
+    .navbar-brand {
+        color: rgb(49, 67, 119);
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.15rem;
+    }
+
+    .nav-link {
+        color: gray;
+        padding-right: 50px;
+    }
+
+    .navbar-nav {
+        margin: auto;
+    }
+
+    .search-box {
+        width: 100%;
+        position: relative;
+        display: flex;
+
+    }
+
+    .search-input {
+        width: 100%;
+        padding-left: 10px;
+        border: 1px solid #111d5e;
+        border-radius: 10px 0 0 10px;
+        border-right: none;
+        outline: none;
+        font-size: 20px;
+        color: grey;
+        background: none;
+    }
+
+    .search-button {
+        text-align: center;
+        height: 51px;
+        width: 80px;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid #111d5e;
+        border-radius: 0 10px 10px 0;
+        border-left: none;
+        background: none;
+        font-size: 20px;
+        border-left: 1px solid #111d5e;
+
+    }
+
+    /* .navbar {
+        margin-left: 8%;
+    } */
+</style>
+<!-- <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><b>Tour<span style="color: black;">.ink</span></b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="navbar-nav">
+                <a class="nav-link active" style="color: rgb(49, 67, 119); border-bottom: 2px solid rgb(49, 67, 119);"
+                    aria-current="page" href="#">Home</a>
+
+                <a class="nav-link" href="#AboutUs">About Us</a>
+            </div>
+
+            <div class="navbar-right">
+                <a href="/login"><button class="btn btn-light">Log In</button></a>
+                <a href="#SignUp" style="text-decoration: none;"><button class="btn btn-dark">Sign Up</button></a>
+            </div>
+        </div>
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><b>HelpIndia</b></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ngo">Home </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href=`/ngo/`>Profile</a>
+                </li> -->
+            </ul>
+            <form action="/ngo/search" method="GET" class="form-inline my-2 my-lg-0">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search.." name="search">
+                    
+                    <button class="search-button">
+                        <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
+                        <!-- <i class="fas fa-search" style="color:black;background-color: black;"></i> -->
+                    </button>
+                </div>
+            </form>
+            <div class="dropdown" style="margin:0em 5em;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= user.name %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="auth/logout">Logout</a></li>
+                 
+                </ul>
+              </div>
+            <!-- <div class="navbar-right">
+                <a href="/login"><button class="btn btn-light">Log In</button></a>
+                <a href="#SignUp" style="text-decoration: none;"><button class="btn btn-dark">Sign Up</button></a>
+            </div> -->
+
+        </div>
+</nav>

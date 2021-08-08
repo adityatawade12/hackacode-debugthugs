@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,14 +20,28 @@
   },
   "homepage": "https://github.com/adityatawade12/hackathon-7-8-21-#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "fuse.js": "^6.4.6",
+    "googleapis": "^39.2.0",
     "joi": "^17.4.2",
     "method-override": "^3.0.0",
-    "mongoose": "^5.13.5"
+    "mongoose": "^5.13.5",
+    "mongoose-slug-updater": "^3.3.0",
+    "multer": "^1.4.2",
+    "multer-google-drive": "^1.0.3",
+    "node-time-ago": "^1.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "time-ago": "^0.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

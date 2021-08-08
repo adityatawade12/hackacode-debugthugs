@@ -1,0 +1,68 @@
+<% layout("layouts/boilerplate") %>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <div class="profile">
+
+        <div class="profile-banner"
+            style="background-image:url('https://images.unsplash.com/photo-1594708767771-a7502209ff51?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmdvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+
+        </div>
+        <div class="profile-picture">
+
+
+            <!-- <a href="" class="follow">Follow <span class="entypo-plus"></span></a> -->
+
+            <a href=""><img src='<%= volunteer.profilePic %>'></a>
+            <br>
+            <span>
+                <h3>
+                    <%= volunteer.name %>
+                </h3>
+
+            </span>
+            <br>
+            <div>
+                <a href="<%= volunteer._id %>/accept"><button class="btn btn-success px-3 ">Accept</button></a>
+                <a href="<%= volunteer._id %>/delete"><button class="btn btn-danger px-3 ">Reject</button></a>
+            </div>
+        </div>
+        <div class="container px-3 my-0 py-0">
+            <div class="row">
+                <div class="col-4 p-1">
+                    <h4>Phone-no:</h4>
+                    <p class="text-muted">
+                        <%= volunteer.phone %>
+                    </p>
+                    <!-- <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul> -->
+                    <hr>
+                    <h4>Email:</h4>
+                    <p class="text-muted">
+                        <%= volunteer.email %>
+                    </p>
+                    <hr>
+                    <!-- <h4>Contact</h4>
+                    <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul> -->
+                </div>
+                <div class="col-8 p-1 ps-5">
+                    <div class="container px-5 d-flex justify-content-center flex-column">
+                        <h4>Bio:</h4>
+                        <p style="font-size: medium;">
+                            <%= volunteer.bio %>
+                        </p>
+                        <h4>Address:</h4>
+                        <p style="font-size: medium;">
+                            <%= volunteer.address %>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

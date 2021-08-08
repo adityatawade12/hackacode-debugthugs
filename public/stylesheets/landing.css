@@ -1,9 +1,11 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 html,
 body {
+    
     width: 100%;
     height: 100%;
     font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
 }
 
 .navbar-brand {
@@ -17,7 +19,7 @@ p {
 
 .nav-link {
     color: gray;
-    padding-right: 50px;
+    padding-right: 0px;
 }
 
 .navbar-nav {
@@ -32,7 +34,8 @@ p {
     width: 80%;
     height: 85%;
     text-align: center;
-    background-image: url(https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg);
+    background-image: url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+    filter: grayscale(1);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -99,7 +102,7 @@ p {
     cursor: pointer;
 }
 
-#download {
+#SignUp {
     text-align: center;
     background-color: rgb(242, 220, 255);
     width: 95%;
@@ -108,8 +111,21 @@ p {
     border-radius: 20px;
 }
 
-#download .btn {
+#SignUp .btn {
     margin-right: 5%;
+}
+
+#AboutUs {
+
+    background-color: rgb(201, 216, 248);
+    width: 95%;
+    padding: 5% 5%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#AboutUs>div {
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .header {
@@ -159,4 +175,27 @@ p {
 
 .header .active {
     color: royalblue;
+}
+
+.sbtn{
+    color: rgb(181, 181, 245);
+    border: 2px solid rgb(181, 181, 245);
+    font-weight: 600;
+}
+
+.sbtn:hover{
+    background-color: rgb(181, 181, 245);
+    color: white;
+    border: 2px solid rgb(181, 181, 245);
+}
+
+.cards{
+    transition: all 0.3s;
+}
+
+.cards:hover{
+    transform:scale(1.05);
+    box-shadow: -2px 2px 24px -4px rgba(229,166,221,0.89);
+    -webkit-box-shadow: -2px 2px 24px -4px rgba(229,166,221,0.89);
+    -moz-box-shadow: -2px 2px 24px -4px rgba(229,166,221,0.89);
 }
