@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const VolunteerSchema = new Schema({
     name:{
         type:String,
-        required:true
+        default:''
     },
     bio:{
         type:String,
-        required:true
+        default:''
     },
     address:{
         type:String,
@@ -17,7 +17,7 @@ const VolunteerSchema = new Schema({
     },
     phone:{
         type:Number,
-        required:true
+        default:''
     },
     email:{
         type:String,

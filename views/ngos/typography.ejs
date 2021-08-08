@@ -21,7 +21,7 @@
 </head>
 
 <body class="">
-  <div class="wrapper ">
+  <div class="wrapper">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
@@ -64,7 +64,7 @@
             </a>
           </li>
           <li>
-            <a href="/user">
+            <a href="/ngo/user">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
@@ -75,10 +75,10 @@
               <p>Table List</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="/typography">
+          <li class="active">
+            <a href="/ngo/volunteers">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
+              <p>Volunteers</p>
             </a>
           </li>
           <li class="active-pro">
@@ -109,7 +109,7 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <div class="collapse navbar-collapse justify-content-start" id="navigation">
             <form>
               <div class="input-group no-border">
                 <input type="text" value="" class="form-control" placeholder="Search...">
@@ -156,113 +156,185 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-badge text-warning"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Volunteers</p>
+                      <p class="card-title">150GB<p>
+                        
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-refresh"></i>
+                  Update Now
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> Volunteers</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      Phone
+                    </th>
+                    <th class="text-right">
+                      Role
+                    </th>
+                  </thead>
+                  <tbody>
+                    <% ngo.volunteers.forEach(function(vol){ %>
+                      <tr>
+                        <td>
+                          <%= vol.name %>
+                        </td>
+                        <td>
+                          <%= vol.email %>
+                        </td>
+                        <td>
+                          <%= vol.phone %>
+                        </td>
+                        <td class="text-right">
+                          $36,738
+                        </td>
+                      </tr>
+                    <% }); %>
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Paper Table Heading</h5>
-                <p class="category">Created using Montserrat Font Family</p>
+                <h4 class="card-title"> Pending Applications</h4>
               </div>
               <div class="card-body">
-                <div class="typography-line">
-                  <h1><span>Header 1</span>The Life of Paper Dashboard </h1>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Email
+                      </th>
+                      <th>
+                        Phone
+                      </th>
+                      <th >
+                        Role
+                      </th>
+                      <th class="text-right">
+                        Accept/Reject Profile
+                      </th>
+                    </thead>
+                    <tbody>
+                      <% apps.forEach(function(app){ %>
+                        <tr>
+                          <td>
+                            <%= app.volunteer.name %>
+                          </td>
+                          <td>
+                            <%= app.volunteer.email %>
+                          </td>
+                          <td>
+                            <%= app.volunteer.phone %>
+                          </td>
+                          <td>
+                            Not assigned
+                          </td>
+                          <td class="text-right">
+                            <a href="/ngo/volunteers/<%= app.volunteer._id %>"><div class="btn btn-success">View Profile</div></a>
+                          </td>
+                        </tr>
+                      <% }); %>
+                      
+                      
+                    </tbody>
+                  </table>
                 </div>
-                <div class="typography-line">
-                  <h2><span>Header 2</span>The Life of Paper Dashboard </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Email Statistics</h5>
+                <p class="card-category">Last Campaign Performance</p>
+              </div>
+              <div class="card-body ">
+                <canvas id="chartEmail"></canvas>
+              </div>
+              <div class="card-footer ">
+                <div class="legend">
+                  <i class="fa fa-circle text-primary"></i> Opened
+                  <i class="fa fa-circle text-warning"></i> Read
+                  <i class="fa fa-circle text-danger"></i> Deleted
+                  <i class="fa fa-circle text-gray"></i> Unopened
                 </div>
-                <div class="typography-line">
-                  <h3><span>Header 3</span>The Life of Paper Dashboard </h3>
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-calendar"></i> Number of emails sent
                 </div>
-                <div class="typography-line">
-                  <h4><span>Header 4</span>The Life of Paper Dashboard </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-title">NASDAQ: AAPL</h5>
+                <p class="card-category">Line Chart with Points</p>
+              </div>
+              <div class="card-body">
+                <canvas id="speedChart" width="400" height="100"></canvas>
+              </div>
+              <div class="card-footer">
+                <div class="chart-legend">
+                  <i class="fa fa-circle text-info"></i> Tesla Model S
+                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
                 </div>
-                <div class="typography-line">
-                  <h5><span>Header 5</span>The Life of Paper Dashboard </h5>
-                </div>
-                <div class="typography-line">
-                  <h6><span>Header 6</span>The Life of Paper Dashboard </h6>
-                </div>
-                <div class="typography-line">
-                  <p><span>Paragraph</span>
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Quote</span>
-                  <blockquote>
-                    <p class="blockquote blockquote-primary">
-                      "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
-                      <br>
-                      <br>
-                      <small>
-                        - Noaa
-                      </small>
-                    </p>
-                  </blockquote>
-                </div>
-                <div class="typography-line">
-                  <span>Muted Text</span>
-                  <p class="text-muted">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Primary Text</span>
-                  <p class="text-primary">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...</p>
-                </div>
-                <div class="typography-line">
-                  <span>Info Text</span>
-                  <p class="text-info">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <span>Success Text</span>
-                  <p class="text-success">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <span>Warning Text</span>
-                  <p class="text-warning">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Danger Text</span>
-                  <p class="text-danger">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <h2><span>Small Tag</span>
-                    Header with small subtitle <br>
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
+                <hr />
+                <div class="card-stats">
+                  <i class="fa fa-check"></i> Data information certified
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -279,6 +351,12 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      demo.initChartsPages();
+    });
+  </script>
 </body>
 
 </html>

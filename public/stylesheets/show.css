@@ -51,9 +51,9 @@
 
 .apply{
   width:90px;
-  /* position:absolute;
-  left:-130px;
-  top:100px; */
+  position:relative;
+  left:0px;
+  top:0px;
   /* background:#00A9FA; */
   padding:5px;
   border-radius:10px;

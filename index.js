@@ -10,6 +10,7 @@ const flash = require('connect-flash')
 const methodOverride = require('method-override')
 const ExpressError = require('./utils/ExpressError')
 const { MongoClient } = require('mongodb');
+const { search } = require('./controllers/search')
 
 const { Cookie } = require('express-session');
 require("./config/mongoose")
@@ -45,20 +46,22 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use("/auth", require("./routes/userAuth"))
 app.use("/NGO", require('./routes/ngo'))
+app.use("/volunteer", require('./routes/volunteer'))
 app.use("/feed",require("./routes/feed"))
 
 
 app.get('/', (req, res) => {
     res.render('landing')
 })
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
     let type = req.query['type']
-    res.render('login',{type})
+    const s = await search();
+    res.render('login', { type })
 })
 
-app.get('/show', (req, res) => {
-    console.log("zzzz")
-    res.render('ngos/show')
+
+app.get('/apply', (req, res) => { 
+    res.render('ngos/applyngo') 
 })
 
 app.get('/dashboard', (req, res) => {
@@ -83,15 +86,15 @@ app.get('/events', (req, res) => {
 app.get('/tables', (req, res) => {
     res.render('ngos/tables.ejs')
 })
-app.get('/typography', (req, res) => {
-    res.render('ngos/typography.ejs')
-})
+// app.get('/typography', (req, res) => {
+//     res.render('ngos/typography.ejs')
+// })
 app.get('/upgrade', (req, res) => {
     res.render('ngos/upgrade.ejs')
 })
-app.get('/user', (req, res) => {
-    res.render('ngos/user.ejs')
-})
+// app.get('/user', (req, res) => {
+//     res.render('ngos/user.ejs')
+// })
 
 app.get("/feed",(req,res)=>{
     res.render("feed")
@@ -106,7 +109,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-app.get('*', (req,res)=>{
+app.get('*', (req, res) => {
     res.render('pageNotFound');
 })
 

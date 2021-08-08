@@ -1,6 +1,8 @@
 const NGO = require('../models/Ngo');
 const NgoEvent = require('../models/Events');
 const Volunteer = require('../models/Volunteers');
+const Applications = require("../models/Applications");
+const Application = require('../models/Applications');
 const Post=require("../models/Feed")
 
 
@@ -71,9 +73,10 @@ const editNgo = async(req,res) => {
     }
    
     console.log(updateObj,req.ngoId)
-   NGO.findOneAndUpdate({_id:req.ngoId},updateObj,{new:true})
+   NGO.findByIdAndUpdate(req.ngoId,updateObj,{new:true})
    .then((ngo)=>{
-       res.send(ngo)
+       console.log(ngo.slug);
+       res.redirect('/dashboard');
    })
     .catch(err=>{res.send(err)})
 }
@@ -114,18 +117,32 @@ const getNgoEvents = (req,res) =>{
     });
 }
 
-const addVolunteer = (req,res) => {
-    const newVolunteer = new Volunteer({...req.body});
-    const volunteerId = newVolunteer._id;
-    newVolunteer.save();
-    NGO.findOneAndUpdate({userId:req.userId},
-        {$push : {volunteers:volunteerId}},
-        {new: true},)
-        .then(ngo => {
-            res.status(200).json(ngo);
-        }).catch(err=>{
-            res.status(500).json(err);
-        }) 
+const getNgoVolunteer = (req,res) =>{
+    console.log(req.ngoId);
+    // Applications.find({ngoId : req.ngoId}).
+    // then(apps=>{
+    //     console.log(apps);
+    //     res.render('ngos/typography.ejs',{ apps : apps });
+    // }).catch(err=>{
+    //     console.log(err);
+    // })
+    NGO.findOne({_id:req.ngoId}).populate('volunteers').
+    then(ngo=>{
+        console.log(ngo);
+        Applications.find({ngoId : req.ngoId}).populate('volunteer')
+        .then(apps=>{
+                console.log(apps);
+                res.render('ngos/typography.ejs',{ apps : apps , ngo : ngo });
+            }).catch(err=>{
+                console.log(err);
+            })
+    }).catch(err=>{
+        console.log(err);
+    })
+
+
+    
+
 }
 
 const updateVolunteer = (req,res) => {
@@ -216,18 +233,88 @@ const createPostRender=(req,res)=>{
     res.render("ngos/createPost")
 }
 
+const getNgo = (req,res) =>{
+    NGO.findOne({userId:req.user._id}).
+    then(ngo=>{
+        console.log(ngo);
+        res.render('ngos/user.ejs', { user : req.user,myNgo : ngo });
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
+const getVolunteer = (req,res) =>{
+    console.log(req.params.id);
+    Volunteer.findOne({_id:req.params.id}).
+    then(volunteer=>{
+        console.log(volunteer);
+        res.render('volunteers/profile',{ volunteer:volunteer });
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
+const acceptVolunteer = (req,res) =>{
+    Volunteer.findOne({_id:req.params.id}).
+    then(vol=>{
+        NGO.findOneAndUpdate({_id:req.ngoId},{$push : {volunteers : vol._id}},{new:true}).
+        then(ngo=>{
+            console.log(ngo);
+            Application.findOneAndDelete({ngoId : req.ngoId}).
+            then(app=>{
+                console.log(app);
+                res.redirect('/ngo/user');
+            }).catch(err=>{
+                console.log(err);
+            })
+            //res.status(200).json(ngo);
+            //res.render('ngos/user');
+        }).catch(err=>{ 
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
+const deleteVolunteer = (req,res) => {
+    Volunteer.findOne({_id:req.params.id}).
+    then(vol=>{
+        NGO.findOneAndUpdate({_id:req.ngoId},{$pull : {volunteers : vol._id}},{new:true}).
+        then(ngo=>{
+            console.log(ngo);
+            Application.findOneAndDelete({ngoId : req.ngoId}).
+            then(app=>{
+                console.log(app);
+                res.redirect('/ngo/user');
+            }).catch(err=>{
+                console.log(err);
+            })
+            //res.status(200).json(ngo);
+        }).catch(err=>{ 
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
     addEvent,
     createNgo,
-    addVolunteer,
     updateVolunteer,
     editNgo,
     getNgoEvents,
+    getNgoVolunteer,
     renderEventPage,
     renderCreateEventPage,
     renderEditEventPage,
+    getNgo,
+    getVolunteer,
+    acceptVolunteer,
+    deleteVolunteer,
     addImage,
     removeImage,
     updateEvent,

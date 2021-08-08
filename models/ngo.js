@@ -5,11 +5,11 @@ mongoose.plugin(slug);
 const NgoSchema = new Schema({
     NgoName:{
         type:String,
-        required:true
+        default:''
     },
     description:{
         type:String,
-        required:true
+        default:''
     },
     owner:{
         type:String,

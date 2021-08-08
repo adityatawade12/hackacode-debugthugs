@@ -43,40 +43,72 @@
         </div>
     </nav>
 
- 
+
     <div class="container">
         <div class="row">
-            <div class="col-md-4 d-flex flex-column align-items-center" style="position: sticky;">
+            <!-- <div class="col-md-4 d-flex flex-column align-items-center" style="position: sticky;">
                 <div class="card" style="width: 20rem;position: fixed;display: flex;top:100px">
                     <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" style="height: 200px;" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                       <a href="#" class="btn btn-primary">Go somewhere</a> 
                     </div>
                   </div>
+            </div> -->
+            <div class="col-md-4 d-flex flex-column align-items-center" style="position: sticky;">
+                <div class="card card-user ">
+                    <div class="image" style="width: auto !important;">
+                        <img src="https://cdn.discordapp.com/attachments/872057355657969694/873828753258737684/aditya.jpg" alt="..."
+                            width="50%">
+                    </div>
+                    <div class="card-body">
+                        <div class="author">
+                            <a href="#">
+                                <!-- <img class="avatar border-gray"
+                                    src="https://drive.google.com/thumbnail?id=1oYx3tPei8u0KbKy204dn9vre_Fa_fOtt"
+                                    alt="..."> -->
+                                <h5 class="title">User NAme</h5>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="button-container">
+                            <div class="row">
+                                <div class="col-md-6 col-6 ml-auto">
+                                    <h5><br><small>Events</small></h5>
+                                </div>
+                                <div class="col-md-6 col-6 ml-auto mr-auto">
+                                    <h5><br><small>Volunteers</small></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
             <div class="col-md-8 d-flex flex-column align-items-center">
                 <% for( let post of posts) { %>
                 <div class="card" style="margin-top: 20px;width: 80%;">
                     <div class="card-body">
-                        <div style="display: inline-block;margin-bottom: 10px;"><img src="<%= post.authorImg %>" style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>
-                      <h5 style="display: inline-block;margin-left: 10px;" class="card-title"><%= post.author %></h5>
-                      <h6><%= post.heading %></h6>
-                      <p style="font-size: 0.95em;" class="card-text"><%= post.text %></p>
-                      <p class="card-text"><small class="text-muted"><%= post.posted %></small></p>
+                        <div style="display: inline-block;margin-bottom: 10px;"><img src="<%= post.authorImg %>"
+                                style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>
+                        <h5 style="display: inline-block;margin-left: 10px;" class="card-title"><%= post.author %></h5>
+                        <h6><%= post.heading %></h6>
+                        <p style="font-size: 0.95em;" class="card-text"><%= post.text %></p>
+                        <p class="card-text"><small class="text-muted"><%= post.posted %></small></p>
                     </div>
                     <img src="<%= post.postImg %>" style="height: 300px;" class="card-img-bottom" alt="...">
-                  </div>
-                  <% } %>
+                </div>
+                <% } %>
 
-   
+
             </div>
         </div>
     </div>
 
 
- 
+
 
     <div class="header">
 
@@ -91,14 +123,14 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 </body>
 <script>
     var left = document.querySelector("#left")
@@ -110,11 +142,13 @@
         var right = document.querySelector("#right")
         if (name.innerHTML === "Food Donation Drive") {
             name.innerHTML = "Beach Cleaning Drive";
-            document.getElementById("image-container").style.backgroundImage = "url(https://images.unsplash.com/photo-1610093641855-31ffd617a94a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhY2glMjBjbGVhbnVwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"
+            document.getElementById("image-container").style.backgroundImage =
+                "url(https://images.unsplash.com/photo-1610093641855-31ffd617a94a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhY2glMjBjbGVhbnVwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"
             document.getElementById("exp").style.color = "white"
         } else if (name.innerHTML === "Beach Cleaning Drive") {
             name.innerHTML = "Food Donation Drive"
-            document.getElementById("image-container").style.backgroundImage = "url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)"
+            document.getElementById("image-container").style.backgroundImage =
+                "url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)"
             document.getElementById("exp").style.color = "white"
         }
     })
@@ -124,11 +158,13 @@
         var right = document.querySelector("#right")
         if (name.innerHTML === "Beach Cleaning Drive") {
             name.innerHTML = "Food Donation Drive";
-            document.getElementById("image-container").style.backgroundImage = "url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)"
+            document.getElementById("image-container").style.backgroundImage =
+                "url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)"
             document.getElementById("exp").style.color = "white"
         } else if (name.innerHTML === "Food Donation Drive") {
             name.innerHTML = "Beach Cleaning Drive"
-            document.getElementById("image-container").style.backgroundImage = "url(https://images.unsplash.com/photo-1610093641855-31ffd617a94a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhY2glMjBjbGVhbnVwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"
+            document.getElementById("image-container").style.backgroundImage =
+                "url(https://images.unsplash.com/photo-1610093641855-31ffd617a94a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmVhY2glMjBjbGVhbnVwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"
             document.getElementById("exp").style.color = "white"
         }
     })

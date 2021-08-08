@@ -17,10 +17,11 @@ const isUser=(req,res,next)=>{
 
 
 const isNGO=async(req,res,next)=>{
+    console.log(req.user);
     if(req.user.type=="NGO"){
         console.log(req.user._id);
-       const ngo=await NGO.findOne({userId:req.user._id})
-       req.ngoId=ngo._id
+        const ngo=await NGO.findOne({userId:req.user._id})
+        req.ngoId=ngo._id
         req.userId = req.user._id;
         next()
     }else{

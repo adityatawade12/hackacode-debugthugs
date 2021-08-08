@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap');
 
 * {
   margin: 0;
@@ -12,7 +12,7 @@ body {
   font-family: 'Poppins', sans-serif;
   align-items: center;
   justify-content: center;
-  background-color: #ADE5F9;
+  background-color: #eff3f5;
   min-height: 100vh;
 }
 img {
@@ -23,7 +23,7 @@ ul {
   list-style: none;
 }
 
-/* Utilities */
+
 .card::after,
 .card img {
   border-radius: 50%;
@@ -49,7 +49,6 @@ body,
 
 .card::before,
 .card::after {
-    
   content: '';
   position: absolute;
   z-index: -1;
@@ -142,4 +141,10 @@ body,
   .links button {
     min-width: 100px;
   }
-}
+<<<<<<< HEAD
+} */
+
+
+/* } */
+
+

@@ -12,10 +12,6 @@
             scrollbar-width: none;
             /* Firefox */
         }
-
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
     </style>
     <link rel="stylesheet" href="/stylesheets/ngo.css">
     <div class="container">
@@ -25,33 +21,33 @@
         <div class="row mt-3">
             <% for( let ngo of ngos) { %>
                 <div class="col-md-4 mt-3 d-flex justify-content-center">
-                    <div class="card" style="width:95%;box-shadow: 0px 0px 23px 2px rgba(219,219,219,0.69);
+                    <div class="card " style="width:95%;box-shadow: 0px 0px 23px 2px rgba(219,219,219,0.69);
                     -webkit-box-shadow: 0px 0px 23px 2px rgba(219,219,219,0.69);
                     -moz-box-shadow: 0px 0px 23px 2px rgba(219,219,219,0.69); border-radius: 10px;">
                         <div class="container-fluid px-3 pt-3" style="height:40%;">
-                            <img class="card-img-top img-fluid" src="<%= ngo.logo %>"
+                            <img class="card-img-top img-fluid" src="<%= ngo.item.logo %>"
                                 style="height: 95%; object-fit: cover;" alt="Card image cap">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">
-                                <%=ngo.NgoName%>
+                                <%=ngo.item.NgoName%>
                             </h3>
                             <h5 class="text-muted">
-                                <%=ngo.owner%>
+                                <%=ngo.item.owner%>
                             </h5>
 
                             <p class="desc card-text" style="height: 60px;overflow-y: scroll;">
-                                <%= ngo.description %>
+                                <%= ngo.item.description %>
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Events- <%= ngo.events.length %>
+                            <li class="list-group-item">Events- <%= ngo.item.events.length %>
                             </li>
 
 
                         </ul>
                         <div class="card-body" style="height: max-content;">
-                            <a href="/NGO/<%= ngo.slug %>" class="card-link"><button class="btn btn-success"
+                            <a href="/NGO/<%= ngo.item.slug %>" class="card-link"><button class="btn btn-success"
                                     style="border: 1px solid black;">Show
                                     Details</button></a>
                             <!-- <a href="#" class="card-link">Another link</a> -->
