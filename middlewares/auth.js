@@ -3,7 +3,8 @@ const isLoggedin=(req,res,next)=>{
     if(req.isAuthenticated()){
         next()
     }else{
-        res.send("no login")
+        // res.send("no login")
+        res.redirect("/login")
     }
 }
 

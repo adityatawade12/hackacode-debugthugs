@@ -11,21 +11,21 @@ const methodOverride = require('method-override')
 const ExpressError = require('./utils/ExpressError')
 const { MongoClient } = require('mongodb');
 const { search } = require('./controllers/search')
-
+const cors=require("cors")
 const { Cookie } = require('express-session');
 require("./config/mongoose")
 require("./config/passport")(passport)
+const socketio = require('socket.io');
 
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(flash());
 app.use(methodOverride('_method'))
 
+app.use(cors())
+const server = app.listen(3000)
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000");
-})
-
+const io = require('socket.io').listen(server)
 
 const sessionConfig = {
     secret: 'ngo-management',
@@ -123,3 +123,65 @@ app.get('*', (req, res) => {
 // app.listen(3000, () => {
 //     console.log("Listening on port 3000");
 // })
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const{ userJoin,
+    getCurrentUser,
+    userLeave,
+    getRoomUsers,
+    formatMessage}=require("./utils/chat")
+
+const botName = 'ChatCord Bot';
+
+// Run when client connects
+io.on('connection', socket => {
+  socket.on('joinRoom', ({ username, room }) => {
+    console.log("asdasd")
+    const user = userJoin(socket.id, username, room);
+
+    socket.join(user.room);
+
+    // Welcome current user
+    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        'message',
+        formatMessage(botName, `${user.username} has joined the chat`)
+      );
+
+    // Send users and room info
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room)
+    });
+  });
+
+  // Listen for chatMessage
+  socket.on('chatMessage', msg => {
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+
+  // Runs when client disconnects
+  socket.on('disconnect', () => {
+    const user = userLeave(socket.id);
+
+    if (user) {
+      io.to(user.room).emit(
+        'message',
+        formatMessage(botName, `${user.username} has left the chat`)
+      );
+
+      // Send users and room info
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      });
+    }
+  });
+});

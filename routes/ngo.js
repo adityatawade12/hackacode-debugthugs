@@ -9,7 +9,7 @@ var cpUpload = upload.fields([{ name: 'cover', maxCount: 1 }, { name: 'profile',
 
 router.get('/',getNgos);
 
-router.get("/chat",renderChat)
+router.get("/chat",isLoggedin,renderChat)
 router.get('/user',isLoggedin,isNGO,getNgo);
 router.post('/createNGO',isLoggedin,isNGO,cpUpload,createNgo);
 router.post('/events/addEvent',isLoggedin,isNGO,addEvent);

@@ -301,7 +301,7 @@ const deleteVolunteer = (req,res) => {
 
 
 const renderChat=(req,res)=>{
-    res.render("tables")
+    res.render("ngos/tables")
 }
 
 
