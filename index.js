@@ -90,6 +90,10 @@ app.get('/user', (req, res) => {
     res.render('ngos/user.ejs')
 })
 
+app.get("/feed",(req,res)=>{
+    res.render("feed")
+})
+
 // app.all("*", (req, res, next) => {
 //     next(new ExpressError("Page not found", 404));
 // })
