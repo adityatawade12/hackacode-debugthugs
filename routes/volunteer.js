@@ -9,13 +9,13 @@ router.get('/add-info', (req, res) => {
 // router.get('/profile', isLoggedin, isVolunteer, (req, res) => {
 //     res.render("volunteers/profile");
 // })
-router.get('/apply/:slug',isLoggedin,isVolunteer,(req,res)=>{
-    res.render("ngos/applyngo",{ slug:req.params.slug });
+router.get('/apply/:slug', isLoggedin, isVolunteer, (req, res) => {
+    res.render("ngos/applyngo", { slug: req.params.slug });
 })
 router.post('/registerVolunteer', isLoggedin, isVolunteer, addVolunteer);
 router.post('/submitApplication/:slug', isLoggedin, isVolunteer, submitApplication);
 
-//router.get('/profile', isLoggedin, isVolunteer, FindVolunteer)
+// router.get('/profile', isLoggedin, isVolunteer, FindVolunteer)
 
 
 module.exports = router;
