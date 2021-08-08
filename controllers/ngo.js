@@ -123,13 +123,22 @@ const getNgoVolunteer = (req,res) =>{
     // }).catch(err=>{
     //     console.log(err);
     // })
-    Applications.find({ngoId : req.ngoId}).populate('volunteer')
-    .then(apps=>{
-            console.log(apps);
-            res.render('ngos/typography.ejs',{ apps : apps });
-        }).catch(err=>{
-            console.log(err);
-        })
+    NGO.findOne({_id:req.ngoId}).populate('volunteers').
+    then(ngo=>{
+        console.log(ngo);
+        Applications.find({ngoId : req.ngoId}).populate('volunteer')
+        .then(apps=>{
+                console.log(apps);
+                res.render('ngos/typography.ejs',{ apps : apps , ngo : ngo });
+            }).catch(err=>{
+                console.log(err);
+            })
+    }).catch(err=>{
+        console.log(err);
+    })
+
+
+    
 
 }
 
@@ -180,6 +189,36 @@ const getVolunteer = (req,res) =>{
     })
 }
 
+const acceptVolunteer = (req,res) =>{
+    Volunteer.findOne({_id:req.params.id}).
+    then(vol=>{
+        NGO.findOneAndUpdate({_id:req.ngoId},{$push : {volunteers : vol._id}},{new:true}).
+        then(ngo=>{
+            console.log(ngo);
+            res.status(200).json(ngo);
+        }).catch(err=>{ 
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
+const deleteVolunteer = (req,res) => {
+    Volunteer.findOne({_id:req.params.id}).
+    then(vol=>{
+        NGO.findOneAndUpdate({_id:req.ngoId},{$pull : {volunteers : vol._id}},{new:true}).
+        then(ngo=>{
+            console.log(ngo);
+            res.status(200).json(ngo);
+        }).catch(err=>{ 
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -193,5 +232,7 @@ module.exports = {
     renderCreateEventPage,
     renderEditEventPage,
     getNgo,
-    getVolunteer
+    getVolunteer,
+    acceptVolunteer,
+    deleteVolunteer
 }
