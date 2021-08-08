@@ -300,8 +300,9 @@ const deleteVolunteer = (req,res) => {
 }
 
 
-const renderChat=(req,res)=>{
-    res.render("ngos/tables")
+const renderChat=async(req,res)=>{
+   const ngo=await NGO.findOne({userId:req.user._id})
+    res.render("ngos/tables",{ngo:ngo.NgoName})
 }
 
 

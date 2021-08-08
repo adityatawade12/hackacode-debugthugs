@@ -2,9 +2,7 @@ const mongoose=require("mongoose")
 const Schema=mongoose.Schema
 
 const chatSchema=new Schema({
-    userid:{
-        type:String
-    },
+   
     name:{
         type:String
     },
@@ -14,6 +12,9 @@ const chatSchema=new Schema({
     timestamp:{
         type:Date,
         default:Date.now
+    },
+    room:{
+        type:String
     }
 })
 

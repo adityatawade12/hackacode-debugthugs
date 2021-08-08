@@ -1,8 +1,13 @@
 const moment = require('moment');
-
-function formatMessage(username, text) {
+const Chat=require("../models/Chat")
+ function formatMessage (user, text) {
+    var name=user.username
+    console.log(name,"----",user)
+    const newChat=new Chat({name:name,text:text,room:user.room})
+  newChat.save()
+  
   return {
-    username,
+    username:user.username,
     text,
     time: moment().format('h:mm a')
   };

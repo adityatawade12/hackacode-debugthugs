@@ -16,6 +16,10 @@ const { Cookie } = require('express-session');
 require("./config/mongoose")
 require("./config/passport")(passport)
 const socketio = require('socket.io');
+const Chat=require("./models/Chat")
+const moment = require('moment');
+const date = require('date-and-time');
+
 
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')))
@@ -136,21 +140,21 @@ const botName = 'ChatCord Bot';
 
 // Run when client connects
 io.on('connection', socket => {
-  socket.on('joinRoom', ({ username, room }) => {
+  socket.on('joinRoom',async ({ username, room }) => {
     console.log("asdasd")
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    // socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
+        formatMessage({username:botName}, `${user.username} has joined the chat`)
       );
 
     // Send users and room info
@@ -158,13 +162,24 @@ io.on('connection', socket => {
       room: user.room,
       users: getRoomUsers(user.room)
     });
+    const chats=await Chat.find({room:user.room})
+    chats.forEach(chat=>{
+    //   var  chatObj={username:chat.name,text:chat.text}
+        socket.emit('message',{
+            username:chat.name,
+            text:chat.text,
+            time: date.format(chat.timestamp, 'hh:mm A ')  
+          });
+    })
+    
+
   });
 
   // Listen for chatMessage
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
 
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
+    io.to(user.room).emit('message', formatMessage(user, msg));
   });
 
   // Runs when client disconnects
@@ -174,7 +189,7 @@ io.on('connection', socket => {
     if (user) {
       io.to(user.room).emit(
         'message',
-        formatMessage(botName, `${user.username} has left the chat`)
+        formatMessage({username:botName}, `${user.username} has left the chat`)
       );
 
       // Send users and room info
