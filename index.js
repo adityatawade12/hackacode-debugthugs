@@ -47,6 +47,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use("/auth", require("./routes/userAuth"))
 app.use("/NGO", require('./routes/ngo'))
 app.use("/volunteer", require('./routes/volunteer'))
+app.use("/feed",require("./routes/feed"))
+
 
 app.get('/', (req, res) => {
     res.render('landing')
@@ -93,6 +95,10 @@ app.get('/upgrade', (req, res) => {
 // app.get('/user', (req, res) => {
 //     res.render('ngos/user.ejs')
 // })
+
+app.get("/feed",(req,res)=>{
+    res.render("feed")
+})
 
 // app.all("*", (req, res, next) => {
 //     next(new ExpressError("Page not found", 404));
