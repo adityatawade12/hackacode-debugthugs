@@ -169,6 +169,17 @@ const getNgo = (req,res) =>{
     })
 }
 
+const getVolunteer = (req,res) =>{
+    console.log(req.params.id);
+    Volunteer.findOne({_id:req.params.id}).
+    then(volunteer=>{
+        console.log(volunteer);
+        res.render('volunteers/profile',{ volunteer:volunteer });
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -181,5 +192,6 @@ module.exports = {
     renderEventPage,
     renderCreateEventPage,
     renderEditEventPage,
-    getNgo
+    getNgo,
+    getVolunteer
 }
