@@ -1,63 +1,68 @@
-<%= layout('layouts/boilerplate') %>
-    <link rel="stylesheet" href="/stylesheets/volunteerprofile.css">
-    <div class="container d-flex justify-content-center">
-        <div class="content-profile-page m-0">
-            <div class="profile-user-page card">
-                <div class="img-user-profile">
-                    <img class="profile-bgHome"
-                        src="https://37.media.tumblr.com/88cbce9265c55a70a753beb0d6ecc2cd/tumblr_n8gxzn78qH1st5lhmo1_1280.jpg" />
-                    <img class="avatar" src="http://gravatar.com/avatar/288ce55a011c709f4e17aef7e3c86c64?s=200"
-                        alt="jofpin" />
-                </div>
-                <!-- <button>Follow</button> -->
-                <div class="user-profile-data">
-                    <h1>
-                        <%= volunteer.name %>
-                    </h1>
+<% layout("layouts/boilerplate") %>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <div class="profile">
 
-                </div>
-                <div class="container p-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <div>
-                                <h3>Email:</h3>
-                                <span>
-                                    <%= volunteer.email %>
-                                </span>
-                            </div>
-                            <div>
-                                <h3>Bio:</h3>
-                                <span>
-                                    <p>
-                                        <%= volunteer.bio %>
-                                    </p>
-                                </span>
-                            </div>
+        <div class="profile-banner"
+            style="background-image:url('https://images.unsplash.com/photo-1594708767771-a7502209ff51?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmdvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
 
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <h3>Phone:<span>
-                                        <%= volunteer.phone %>
-                                    </span></h3>
-                            </div>
-                            <div>
-                                <h3>Address:</h3>
-                                <span>
-                                    <p>
-                                        <%= volunteer.address %>
-                                    </p>
-                                </span>
-                            </div>
-                        </div>
+        </div>
+        <div class="profile-picture">
+
+
+            <!-- <a href="" class="follow">Follow <span class="entypo-plus"></span></a> -->
+
+            <a href=""><img src='<%= volunteer.profilePic %>'></a>
+            <br>
+            <span>
+                <h3>
+                    <%= volunteer.name %>
+                </h3>
+
+            </span>
+            <br>
+            <div>
+                <a><button class="btn btn-success px-3 ">Accept</button></a>
+                <a><button class="btn btn-danger px-3 ">Reject</button></a>
+            </div>
+        </div>
+        <div class="container px-3 my-0 py-0">
+            <div class="row">
+                <div class="col-4 p-1">
+                    <h4>Phone-no:</h4>
+                    <p class="text-muted">
+                        <%= volunteer.phone %>
+                    </p>
+                    <!-- <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul> -->
+                    <hr>
+                    <h4>Email:</h4>
+                    <p class="text-muted">
+                        <%= volunteer.email %>
+                    </p>
+                    <hr>
+                    <!-- <h4>Contact</h4>
+                    <ul class="px-3" style="font-size: medium;">
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                        <li><a>Facebook</a></li>
+                    </ul> -->
+                </div>
+                <div class="col-8 p-1 ps-5">
+                    <div class="container px-5 d-flex justify-content-center flex-column">
+                        <h4>Bio:</h4>
+                        <p style="font-size: medium;">
+                            <%= volunteer.bio %>
+                        </p>
+                        <h4>Address:</h4>
+                        <p style="font-size: medium;">
+                            <%= volunteer.address %>
+                        </p>
+
                     </div>
                 </div>
-
-                <!-- <ul class="data-user">
-                    <li><a><strong>3390</strong><span>Posts</span></a></li>
-                    <li><a><strong>718</strong><span>Followers</span></a></li>
-                    <li><a><strong>239</strong><span>Following</span></a></li>
-                </ul> -->
             </div>
         </div>
     </div>

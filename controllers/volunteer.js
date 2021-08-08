@@ -22,7 +22,7 @@ const addVolunteer = async (req, res) => {
         newVolunteer.save().
             then(vol => {
                 // res.status(200).json(vol);
-                res.redirect('/volunteer/profile')
+                res.redirect('/NGO')
             }).catch(err => {
                 console.log(err);
                 res.status(500).json(err);

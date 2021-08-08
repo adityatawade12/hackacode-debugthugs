@@ -25,15 +25,15 @@ const loginUser = (req, res, next) => {
             req.logIn(user, err => {
                 if (err) res.status(500).json({ msg: "there was an error", userData: {} })
                 //res.status(200).json({msg:"Successfully login",userData:user})
-                if(user.type=="volunteer"){
+                if (user.type == "volunteer") {
                     res.redirect('/NGO');
-                }else if(user.type=="NGO"){
+                } else if (user.type == "NGO") {
                     res.redirect('/ngo/user');
                 }
-                else{
+                else {
                     res.render('test', { user: user });
                 }
-                
+
             })
         }
 
@@ -75,8 +75,9 @@ const registerUser = (req, res, next) => {
                                         // console.log(user)
                                         // console.log("reached here")
                                         res.redirect('/volunteer/add-info')
-                                    } else if(user.type === "NGO"){
-                                        const newNgo = new NGO({userId:user._id});
+                                        // res.redirect('/NGO')
+                                    } else if (user.type === "NGO") {
+                                        const newNgo = new NGO({ userId: user._id });
                                         newNgo.save();
                                         res.redirect('/ngo/user');
                                     }
