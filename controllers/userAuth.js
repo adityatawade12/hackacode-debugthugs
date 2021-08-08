@@ -4,6 +4,7 @@ const passport = require("passport")
 const fs = require('fs');
 const driveAuth = require("../config/gdrive")
 const { google } = require('googleapis');
+const NGO = require("../models/Ngo");
 
 const ensureAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -26,7 +27,10 @@ const loginUser = (req, res, next) => {
                 //res.status(200).json({msg:"Successfully login",userData:user})
                 if(user.type=="volunteer"){
                     res.redirect('/NGO');
-                }else{
+                }else if(user.type=="NGO"){
+                    res.redirect('/ngo/user');
+                }
+                else{
                     res.render('test', { user: user });
                 }
                 
@@ -37,6 +41,7 @@ const loginUser = (req, res, next) => {
 
     })(req, res, next)
 }
+
 
 const registerUser = (req, res, next) => {
     const { name, email, password, type } = (req.body)
@@ -65,14 +70,18 @@ const registerUser = (req, res, next) => {
                                 req.logIn(user, err => {
                                     if (err) res.status(500).json({ msg: "there was an error", userData: {} })
                                     //res.status(200).json({msg:"Successfully login",userData:user})
-
+                                    console.log(user.type);
                                     if (user.type === "volunteer") {
                                         // console.log(user)
                                         // console.log("reached here")
                                         res.redirect('/volunteer/add-info')
+                                    } else if(user.type === "NGO"){
+                                        const newNgo = new NGO({userId:user._id});
+                                        newNgo.save();
+                                        res.redirect('/ngo/user');
                                     }
                                     else {
-                                        res.render('test', { user: user });
+                                        // res.render('test', { user: user });
                                     }
 
                                 })

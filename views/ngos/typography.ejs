@@ -58,13 +58,13 @@
             </a>
           </li>
           <li>
-            <a href="/notifications">
+            <a href="/events">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Notifications</p>
+              <p>Events</p>
             </a>
           </li>
           <li>
-            <a href="/user">
+            <a href="/ngo/user">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
@@ -76,9 +76,9 @@
             </a>
           </li>
           <li class="active">
-            <a href="/typography">
+            <a href="/ngo/volunteers">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
+              <p>Volunteers</p>
             </a>
           </li>
           <li class="active-pro">
@@ -163,13 +163,14 @@
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-globe text-warning"></i>
+                      <i class="nc-icon nc-badge text-warning"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Volunteers</p>
                       <p class="card-title">150GB<p>
+                        
                     </div>
                   </div>
                 </div>
@@ -186,18 +187,181 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> Volunteers</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      Phone
+                    </th>
+                    <th class="text-right">
+                      Role
+                    </th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Dakota Rice
+                      </td>
+                      <td>
+                        Niger
+                      </td>
+                      <td>
+                        Oud-Turnhout
+                      </td>
+                      <td class="text-right">
+                        $36,738
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Minerva Hooper
+                      </td>
+                      <td>
+                        Curaçao
+                      </td>
+                      <td>
+                        Sinaai-Waas
+                      </td>
+                      <td class="text-right">
+                        $23,789
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sage Rodriguez
+                      </td>
+                      <td>
+                        Netherlands
+                      </td>
+                      <td>
+                        Baileux
+                      </td>
+                      <td class="text-right">
+                        $56,142
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Philip Chaney
+                      </td>
+                      <td>
+                        Korea, South
+                      </td>
+                      <td>
+                        Overland Park
+                      </td>
+                      <td class="text-right">
+                        $38,735
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Doris Greene
+                      </td>
+                      <td>
+                        Malawi
+                      </td>
+                      <td>
+                        Feldkirchen in Kärnten
+                      </td>
+                      <td class="text-right">
+                        $63,542
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Mason Porter
+                      </td>
+                      <td>
+                        Chile
+                      </td>
+                      <td>
+                        Gloucester
+                      </td>
+                      <td class="text-right">
+                        $78,615
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Jon Porter
+                      </td>
+                      <td>
+                        Portugal
+                      </td>
+                      <td>
+                        Gloucester
+                      </td>
+                      <td class="text-right">
+                        $98,615
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Pending Applications</h4>
               </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Email
+                      </th>
+                      <th>
+                        Phone
+                      </th>
+                      <th >
+                        Role
+                      </th>
+                      <th class="text-right">
+                        Accept/Reject Profile
+                      </th>
+                    </thead>
+                    <tbody>
+                      <% apps.forEach(function(app){ %>
+                        <tr>
+                          <td>
+                            <%= app.volunteer.name %>
+                          </td>
+                          <td>
+                            <%= app.volunteer.email %>
+                          </td>
+                          <td>
+                            <%= app.volunteer.phone %>
+                          </td>
+                          <td>
+                            Not assigned
+                          </td>
+                          <td class="text-right">
+                            <div class="btn btn-success">View Profile</div>
+                          </td>
+                        </tr>
+                      <% }); %>
+                      
+                      
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -250,26 +414,7 @@
           </div>
         </div>
       </div>
-      <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   </div>
   <!--   Core JS Files   -->

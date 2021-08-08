@@ -70,22 +70,26 @@ const editNgo = async(req,res) => {
     }
    
     console.log(updateObj,req.ngoId)
-   NGO.findOneAndUpdate({_id:req.ngoId},updateObj,{new:true})
+   NGO.findByIdAndUpdate(req.ngoId,updateObj,{new:true})
    .then((ngo)=>{
-       res.send(ngo)
+       console.log(ngo.slug);
+       res.redirect('/dashboard');
    })
     .catch(err=>{res.send(err)})
 }
 
-const addEvent = (req,res) => {
-    const newEvent = new NgoEvent({...req.body});
+const addEvent = async(req,res) => {
+    const ngo=await NGO.findOne({_id:req.ngoId})
+    const img=ngo.logo
+    const newEvent = new NgoEvent({...req.body,logo:img});
     const eventId = newEvent._id;
-    newEvent.save();
+    await newEvent.save();
     NGO.findOneAndUpdate({userId:req.userId},
         {$push : {events: eventId}},
         {new: true},)
         .then(ngo => {
-            res.status(200).json(ngo);
+            res.redirect("/NGO/events")
+            // res.status(200).json(ngo);
         }).catch(err=>{
             res.status(500).json(err);
         })
@@ -93,20 +97,40 @@ const addEvent = (req,res) => {
 
 const getNgoEvents = (req,res) =>{
     NGO.findOne({userId:req.userId}).populate('events')
-    .then(events=>{
-        res.status(200).json(events);
+    .then(data=>{
+        const e=data.events
+        var eventC=[]
+        var eventP=[]
+        e.forEach(element => {
+            if(element.endDate<Date.now()){
+                eventP.push(element)
+            }else{
+                eventC.push(element)
+            }
+        });
+        res.render("ngos/events",{eventsC:eventC,eventsP:eventP})
     }).catch(err=>{
         res.status(500).json(err);
     });
 }
 
 const getNgoVolunteer = (req,res) =>{
-    NGO.findOne({userId:req.userId}).populate('volunteers')
-    .then(vol => {
-        res.status(200).json(vol);
-    }).catch(err=>{
-        res.status(500).json(err);
-    })
+    console.log(req.ngoId);
+    // Applications.find({ngoId : req.ngoId}).
+    // then(apps=>{
+    //     console.log(apps);
+    //     res.render('ngos/typography.ejs',{ apps : apps });
+    // }).catch(err=>{
+    //     console.log(err);
+    // })
+    Applications.find({ngoId : req.ngoId}).populate('volunteer')
+    .then(apps=>{
+            console.log(apps);
+            res.render('ngos/typography.ejs',{ apps : apps });
+        }).catch(err=>{
+            console.log(err);
+        })
+
 }
 
 const updateVolunteer = (req,res) => {
@@ -118,6 +142,33 @@ const updateVolunteer = (req,res) => {
     })
 }
 
+const renderEventPage= (req, res) => {
+    console.log("here")
+    res.render('ngos/events')
+}
+
+const renderEditEventPage= (req, res) => {
+    res.render('ngos/editEvent.ejs')
+}
+
+const renderCreateEventPage=(req,res)=>{
+    res.render('ngos/createEvent.ejs')
+}
+
+const renderViewEventPage=(req,res)=>{
+    res.render('ngos/viewEvent.ejs')
+}
+
+const getNgo = (req,res) =>{
+    NGO.findOne({userId:req.user._id}).
+    then(ngo=>{
+        console.log(ngo);
+        res.render('ngos/user.ejs', { user : req.user,myNgo : ngo });
+    }).catch(err=>{
+        console.log(err);
+    })
+}
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -126,5 +177,9 @@ module.exports = {
     updateVolunteer,
     editNgo,
     getNgoEvents,
-    getNgoVolunteer
+    getNgoVolunteer,
+    renderEventPage,
+    renderCreateEventPage,
+    renderEditEventPage,
+    getNgo
 }

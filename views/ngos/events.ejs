@@ -39,7 +39,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+          <li>
             <a href="/dashboard">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
@@ -54,17 +54,17 @@
           <li>
             <a href="/map">
               <i class="nc-icon nc-pin-3"></i>
-              <p>MyMaps</p>
+              <p>Maps</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="/events">
               <i class="nc-icon nc-bell-55"></i>
               <p>Events</p>
             </a>
           </li>
           <li>
-            <a href="/ngo/user">
+            <a href="/user">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
@@ -76,9 +76,9 @@
             </a>
           </li>
           <li>
-            <a href="/ngo/volunteers">
+            <a href="/typography">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Volunteers</p>
+              <p>Typography</p>
             </a>
           </li>
           <li class="active-pro">
@@ -156,177 +156,111 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
+                <!-- event card start -->
                 <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-globe text-warning"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Capacity</p>
-                      <p class="card-title">150GB<p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-refresh"></i>
-                  Update Now
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-money-coins text-success"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Revenue</p>
-                      <p class="card-title">$ 1,345<p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar-o"></i>
-                  Last day
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-vector text-danger"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Errors</p>
-                      <p class="card-title">23<p>
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4 class="card-title"><strong> Current Events</strong></h4>
+                        <!-- <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p> -->
+                      </div>
+                      <div class="card-body">
+                        <div class="row container justify-content-end">
+                          <a class="btn btn-primary" href="/NGO/events/new">Create new event</a>
+                        </div>
+                        <div class="row container">
+                          <% for( let event of eventsC) { %>
+                          <div class="card mb-3" style="max-width: 100%;">
+                            <div class="row g-0">
+                              <div class="col-md-3 d-flex justify-content-center" >
+                                <img src="<%= event.logo %>" class="img-fluid rounded-start" alt="...">
+                              </div>
+                              <div class="col-md-9">
+                                <div class="card-body">
+                                  <h5 class="card-title"><%= event.name %></h5>
+                                  <p class="card-text"><%= event.startDate.toLocaleDateString(
+                                    'en-gb',
+                                    {
+                                      year: 'numeric',
+                                      month: 'long',
+                                      day: 'numeric'
+                                    }
+                                  ); %> - <%= event.endDate.toLocaleDateString(
+                                    'en-gb',
+                                    {
+                                      year: 'numeric',
+                                      month: 'long',
+                                      day: 'numeric'
+                                    }
+                                  ); %></p>
+                                  <p class="card-text"><%= event.eventInfo %></p>
+                                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                  <div><a class="btn btn-primary">Manage</a></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <% } %>
+            
+        
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-clock-o"></i>
-                  In the last hour
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-favourite-28 text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Followers</p>
-                      <p class="card-title">+45K<p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-refresh"></i>
-                  Update now
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <!-- event page end -->
+        <!-- event card start -->
         <div class="row">
           <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Email Statistics</h5>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="chartEmail"></canvas>
-              </div>
-              <div class="card-footer ">
-                <div class="legend">
-                  <i class="fa fa-circle text-primary"></i> Opened
-                  <i class="fa fa-circle text-warning"></i> Read
-                  <i class="fa fa-circle text-danger"></i> Deleted
-                  <i class="fa fa-circle text-gray"></i> Unopened
-                </div>
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar"></i> Number of emails sent
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card card-chart">
+            <div class="card">
               <div class="card-header">
-                <h5 class="card-title">NASDAQ: AAPL</h5>
-                <p class="card-category">Line Chart with Points</p>
+                <h4 class="card-title"><strong> Past Events</strong></h4>
+                <!-- <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p> -->
               </div>
               <div class="card-body">
-                <canvas id="speedChart" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer">
-                <div class="chart-legend">
-                  <i class="fa fa-circle text-info"></i> Tesla Model S
-                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                </div>
-                <hr />
-                <div class="card-stats">
-                  <i class="fa fa-check"></i> Data information certified
+                <div class="row container">
+                  <% for( let event of eventsP) { %>
+                    <div class="card mb-3" style="max-width: 100%;">
+                      <div class="row g-0">
+                        <div class="col-md-3 d-flex justify-content-center" >
+                          <img src="<%= event.logo %>" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                          <div class="card-body">
+                            <h5 class="card-title"><%= event.name %></h5>
+                            <p class="card-text"><%= event.startDate.toLocaleDateString(
+                              'en-gb',
+                              {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              }
+                            ); %> - <%= event.endDate.toLocaleDateString(
+                              'en-gb',
+                              {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              }
+                            ); %></p>
+                            <p class="card-text"><%= event.eventInfo %></p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <div><a class="btn btn-primary">Manage</a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+
+
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- event page end -->
+ 
+ 
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -364,12 +298,6 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-  </script>
 </body>
 
 </html>
