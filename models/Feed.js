@@ -18,7 +18,7 @@ const postSchema=new Schema({
     },
     posted:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     },
     authorId:{
         type:String
