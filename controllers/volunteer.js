@@ -70,11 +70,15 @@ const submitApplication = (req, res) => {
 
 }
 
+const renderNgo = (req,res) =>{
+    res.render('ngos/ngo',{user:req.user})
+}
 
 module.exports = {
     addVolunteer,
     submitApplication,
     FindVolunteer,
+    renderNgo
 }
 
 // NGO.findOneAndUpdate({userId:req.userId},

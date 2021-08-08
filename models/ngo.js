@@ -38,7 +38,7 @@ const NgoSchema = new Schema({
     },
     logo:{
         type:String,
-        default:""
+        default:'https://cdn.discordapp.com/attachments/872057355657969694/873828753258737684/aditya.jpg'
     }
 });
 

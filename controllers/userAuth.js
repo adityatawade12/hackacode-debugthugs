@@ -77,8 +77,9 @@ const registerUser = (req, res, next) => {
                                         res.redirect('/volunteer/add-info')
                                         // res.redirect('/NGO')
                                     } else if (user.type === "NGO") {
-                                        const newNgo = new NGO({ userId: user._id });
+                                        const newNgo = new NGO({ NgoName:user.name,userId: user._id });
                                         newNgo.save();
+                                        console.log(newNgo);
                                         res.redirect('/ngo/user');
                                     }
                                     else {
@@ -104,7 +105,7 @@ const registerUser = (req, res, next) => {
 
 const logoutUser = (req, res, next) => {
     req.logout()
-    res.status(200).json({ msg: "userLoggedOut", userData: {} })
+    res.redirect('/login');
 }
 
 const currentUser = (req, res, next) => {

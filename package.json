@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/adityatawade12/hackathon-7-8-21-#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",

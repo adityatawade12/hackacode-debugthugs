@@ -9,7 +9,7 @@ const Post=require("../models/Feed")
 const getNgos=(req,res)=>{
     NGO.find({}).
     then(ngo=>{
-        res.render("ngos/ngo",{ ngos : ngo });
+        res.render("ngos/ngo",{ ngos : ngo,user:req.user });
     })
     .catch(err=>{
         res.status(500).json(err)
@@ -76,7 +76,7 @@ const editNgo = async(req,res) => {
    NGO.findByIdAndUpdate(req.ngoId,updateObj,{new:true})
    .then((ngo)=>{
        console.log(ngo.slug);
-       res.redirect('/dashboard');
+       res.redirect('/ngo/user');
    })
     .catch(err=>{res.send(err)})
 }
@@ -111,7 +111,7 @@ const getNgoEvents = (req,res) =>{
                 eventC.push(element)
             }
         });
-        res.render("ngos/events",{eventsC:eventC,eventsP:eventP})
+        res.render("ngos/events",{eventsC:eventC,eventsP:eventP,user:req.user})
     }).catch(err=>{
         res.status(500).json(err);
     });
@@ -132,7 +132,7 @@ const getNgoVolunteer = (req,res) =>{
         Applications.find({ngoId : req.ngoId}).populate('volunteer')
         .then(apps=>{
                 console.log(apps);
-                res.render('ngos/typography.ejs',{ apps : apps , ngo : ngo });
+                res.render('ngos/typography.ejs',{ apps : apps , ngo : ngo, user: req.user });
             }).catch(err=>{
                 console.log(err);
             })
@@ -156,7 +156,7 @@ const updateVolunteer = (req,res) => {
 
 const renderEventPage= (req, res) => {
     console.log("here")
-    res.render('ngos/events')
+    res.render('ngos/events',{user:req.user})
 }
 
 const renderEditEventPage= async(req, res) => {
@@ -166,7 +166,7 @@ const renderEditEventPage= async(req, res) => {
     data.startDate=data1.startDate.toISOString().slice(0,10)
     data.endDate=data1.endDate.toISOString().slice(0,10)
     console.log(data)
-    res.render('ngos/editEvent.ejs',{data:data1})
+    res.render('ngos/editEvent.ejs',{data:data1,user:req.user})
 }
 
 const updateEvent=(req,res)=>{
@@ -176,7 +176,7 @@ const updateEvent=(req,res)=>{
     .then(event=>{
         res.redirect("/NGO/events/"+req.params.id+"/edit")
     }).catch(err=>{
-        res.redirect("/NGO/events")
+        res.redirect("/NGO/events",{ user : req.user  })
     })
 }
 
@@ -227,14 +227,14 @@ const deleteEvent=(req,res)=>{
 }
 const getMyposts=async(req,res)=>{
     const posts=await Post.find({authorId:req.user._id})
-    res.render("ngos/myPosts.ejs",{posts:posts})
+    res.render("ngos/myPosts.ejs",{posts:posts,user:req.user})
 }
 const createPostRender=(req,res)=>{
     res.render("ngos/createPost")
 }
 
 const getNgo = (req,res) =>{
-    NGO.findOne({userId:req.user._id}).
+    NGO.findOne({userId:req.user._id}).populate('volunteers').
     then(ngo=>{
         console.log(ngo);
         res.render('ngos/user.ejs', { user : req.user,myNgo : ngo });

@@ -83,7 +83,7 @@
 </nav> -->
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><b>Tour<span style="color: black;">.ink</span></b></a>
+        <a class="navbar-brand" href="/"><b>HelpIndia</b></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -96,13 +96,23 @@
             <form action="/ngo/search" method="GET" class="form-inline my-2 my-lg-0">
                 <div class="search-box">
                     <input type="text" class="search-input" placeholder="Search.." name="search">
-
+                    
                     <button class="search-button">
                         <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
                         <!-- <i class="fas fa-search" style="color:black;background-color: black;"></i> -->
                     </button>
                 </div>
             </form>
+            <div class="dropdown" style="margin:0em 5em;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= user.name %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="auth/logout">Logout</a></li>
+                 
+                </ul>
+              </div>
             <!-- <div class="navbar-right">
                 <a href="/login"><button class="btn btn-light">Log In</button></a>
                 <a href="#SignUp" style="text-decoration: none;"><button class="btn btn-dark">Sign Up</button></a>

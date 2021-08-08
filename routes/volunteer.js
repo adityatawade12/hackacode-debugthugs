@@ -1,11 +1,13 @@
 const express = require("express");
-const { addVolunteer, submitApplication, FindVolunteer } = require("../controllers/volunteer");
+const { addVolunteer, submitApplication, FindVolunteer,renderNgo } = require("../controllers/volunteer");
 const { isLoggedin, isVolunteer } = require("../middlewares/auth");
 const router = express.Router();
 
 router.get('/add-info', (req, res) => {
     res.render("ngos/additionalinfo");
 })
+
+router.get('/NGO',isLoggedin,isVolunteer,renderNgo)
 // router.get('/profile', isLoggedin, isVolunteer, (req, res) => {
 //     res.render("volunteers/profile");
 // })
