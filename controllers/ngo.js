@@ -299,6 +299,12 @@ const deleteVolunteer = (req,res) => {
     })
 }
 
+
+const renderChat=(req,res)=>{
+    res.render("tables")
+}
+
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -320,5 +326,6 @@ module.exports = {
     updateEvent,
     deleteEvent,
     getMyposts,
-    createPostRender
+    createPostRender,
+    renderChat
 }
