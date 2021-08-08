@@ -2,6 +2,7 @@ const NGO = require('../models/Ngo');
 const NgoEvent = require('../models/Events');
 const Volunteer = require('../models/Volunteers');
 const Applications = require("../models/Applications");
+const Application = require('../models/Applications');
 
 const getNgos=(req,res)=>{
     NGO.find({}).
@@ -195,7 +196,15 @@ const acceptVolunteer = (req,res) =>{
         NGO.findOneAndUpdate({_id:req.ngoId},{$push : {volunteers : vol._id}},{new:true}).
         then(ngo=>{
             console.log(ngo);
-            res.status(200).json(ngo);
+            Application.findOneAndDelete({ngoId : req.ngoId}).
+            then(app=>{
+                console.log(app);
+                res.redirect('/ngo/user');
+            }).catch(err=>{
+                console.log(err);
+            })
+            //res.status(200).json(ngo);
+            //res.render('ngos/user');
         }).catch(err=>{ 
             console.log(err);
         })
@@ -210,7 +219,14 @@ const deleteVolunteer = (req,res) => {
         NGO.findOneAndUpdate({_id:req.ngoId},{$pull : {volunteers : vol._id}},{new:true}).
         then(ngo=>{
             console.log(ngo);
-            res.status(200).json(ngo);
+            Application.findOneAndDelete({ngoId : req.ngoId}).
+            then(app=>{
+                console.log(app);
+                res.redirect('/ngo/user');
+            }).catch(err=>{
+                console.log(err);
+            })
+            //res.status(200).json(ngo);
         }).catch(err=>{ 
             console.log(err);
         })
