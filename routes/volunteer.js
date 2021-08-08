@@ -14,6 +14,10 @@ router.get('/NGO',isLoggedin,isVolunteer,renderNgo)
 router.get('/apply/:slug', isLoggedin, isVolunteer, (req, res) => {
     res.render("ngos/applyngo", { slug: req.params.slug });
 })
+
+router.get('/chat',isLoggedin,isVolunteer,(req,res)=>{
+    res.render('Vchat')
+})
 router.post('/registerVolunteer', isLoggedin, isVolunteer, addVolunteer);
 router.post('/submitApplication/:slug', isLoggedin, isVolunteer, submitApplication);
 

@@ -35,7 +35,7 @@ p {
     height: 85%;
     text-align: center;
     background-image: url(https://images.unsplash.com/photo-1593113630400-ea4288922497?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
-    filter: grayscale(1);
+    filter: grayscale(0.5);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -116,8 +116,8 @@ p {
 }
 
 #AboutUs {
-
-    background-color: rgb(201, 216, 248);
+    color: #005A8D !important;
+    background-color: #CAF7E3;
     width: 95%;
     padding: 5% 5%;
     margin: auto;
