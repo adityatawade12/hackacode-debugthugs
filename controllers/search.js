@@ -2,7 +2,7 @@ const Fuse = require('fuse.js')
 const NGO = require('../models/Ngo')
 
 module.exports = {
-    search: async () => {
+    search: async (param) => {
         try {
             const ngo = await NGO.find({})
 
@@ -29,7 +29,7 @@ module.exports = {
             const fuse = new Fuse(ngo, options);
 
             // Change the pattern
-            const pattern = "namemygo"
+            const pattern = param
             const searchresults = fuse.search(pattern)
             return searchresults;
         }
