@@ -1,6 +1,8 @@
 const NGO = require('../models/Ngo');
 const NgoEvent = require('../models/Events');
 const Volunteer = require('../models/Volunteers');
+const Post=require("../models/Feed")
+
 
 const getNgos=(req,res)=>{
     NGO.find({}).
@@ -206,6 +208,13 @@ const deleteEvent=(req,res)=>{
             res.status(500).json(err);
         }) 
 }
+const getMyposts=async(req,res)=>{
+    const posts=await Post.find({authorId:req.user._id})
+    res.render("ngos/myPosts.ejs",{posts:posts})
+}
+const createPostRender=(req,res)=>{
+    res.render("ngos/createPost")
+}
 
 module.exports = {
     getNgos,
@@ -222,5 +231,7 @@ module.exports = {
     addImage,
     removeImage,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    getMyposts,
+    createPostRender
 }

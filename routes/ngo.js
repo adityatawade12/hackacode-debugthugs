@@ -1,5 +1,5 @@
 const express=require("express");
-const { getNgos, getparticularNgo, addEvent, createNgo, addVolunteer, editNgo, getNgoEvents, renderEventPage, renderCreateEventPage, renderEditEventPage, addImage, removeImage, updateEvent, deleteEvent } = require("../controllers/ngo");
+const { getNgos, getparticularNgo, addEvent, createNgo, addVolunteer, editNgo, getNgoEvents, renderEventPage, renderCreateEventPage, renderEditEventPage, addImage, removeImage, updateEvent, deleteEvent, getMyposts, createPostRender } = require("../controllers/ngo");
 const { isNGO, isLoggedin } = require("../middlewares/auth");
 const router = express.Router();
 const NGO =require('../models/Ngo');
@@ -18,6 +18,8 @@ router.get("/events/new",renderCreateEventPage)
 router.get("/events/:id/edit",renderEditEventPage)
 router.post("/events/:id/edit",updateEvent)
 router.put("/addImage",isLoggedin,isNGO,upload.single("image"),addImage)
+router.get("/myPosts",isLoggedin,getMyposts)
+router.get("/myPosts/new",createPostRender)
 router.post("/removeImage",upload.single("image"),removeImage)
 router.get('/:slug',getparticularNgo);
 router.delete("/events/:id",isLoggedin,isNGO,deleteEvent)

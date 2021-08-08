@@ -57,15 +57,19 @@
                   </div>
             </div>
             <div class="col-md-8 d-flex flex-column align-items-center">
+                <% for( let post of posts) { %>
                 <div class="card" style="margin-top: 20px;width: 80%;">
                     <div class="card-body">
-                        <div style="display: inline-block;margin-bottom: 10px;"><img src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg" style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>
-                      <h5 style="display: inline-block;margin-left: 10px;" class="card-title">Author Name</h5>
-                      <p style="font-size: 0.95em;" class="card-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div style="display: inline-block;margin-bottom: 10px;"><img src="<%= post.authorImg %>" style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>
+                      <h5 style="display: inline-block;margin-left: 10px;" class="card-title"><%= post.author %></h5>
+                      <h6><%= post.heading %></h6>
+                      <p style="font-size: 0.95em;" class="card-text"><%= post.text %></p>
+                      <p class="card-text"><small class="text-muted"><%= post.posted %></small></p>
                     </div>
-                    <img src="https://www.holidify.com/images/bgImages/MUMBAI.jpg" style="height: 300px;" class="card-img-bottom" alt="...">
+                    <img src="<%= post.postImg %>" style="height: 300px;" class="card-img-bottom" alt="...">
                   </div>
+                  <% } %>
+
                   <div class="card" style="margin-top: 20px;">
                     <div class="card-body">
                         <div style="display: inline-block;"><img src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg" style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>

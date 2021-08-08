@@ -45,7 +45,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="/NGO/myPosts">
               <i class="nc-icon nc-diamond"></i>
               <p>My Posts</p>
@@ -57,7 +57,7 @@
               <p>Maps</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="/NGO/events">
               <i class="nc-icon nc-bell-55"></i>
               <p>Events</p>
@@ -156,137 +156,35 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
-                <!-- event card start -->
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title text-center"><strong>Create Event</strong></h4>
-                        <!-- <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p> -->
-                      </div>
-                      <div class="card-body container">
-                        <form action="/NGO/events/addEvent" method="POST">
-                            <div class="row">
-                              
-                              <div class="col-md-9 pr-1">
-                                <div class="form-group">
-                                  <label>Event Name</label>
-                                  <input type="text" class="form-control" name="name" placeholder="Event Name" value="Event Name">
-                                </div>
-                              </div>
-                             
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6 pr-1">
-                                <div class="form-group">
-                                  <label>Start Date</label>
-                                  <input type="date" name="startDate" class="form-control">
-                                </div>
-                              </div>
-                              <div class="col-md-6 pl-1">
-                                <div class="form-group">
-                                  <label>End Date</label>
-                                  <input type="date" name="endDate" class="form-control" >
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Address</label>
-                                  <input type="text" class="form-control" placeholder="Home Address" value="Melbourne, Australia">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6 pr-1">
-                                <div class="form-group">
-                                  <label>City</label>
-                                  <input type="text" class="form-control" placeholder="City" value="Melbourne">
-                                </div>
-                              </div>
-                              <div class="col-md-6 px-1">
-                                <div class="form-group">
-                                  <label>State</label>
-                                  <input type="text" class="form-control" placeholder="State" value="Maharashtra">
-                                </div>
-                              </div>
-                              <!-- <div class="col-md-4 pl-1">
-                                <div class="form-group">
-                                  <label>Postal Code</label>
-                                  <input type="number" class="form-control" placeholder="ZIP Code">
-                                </div>
-                              </div> -->
-                            </div>
-                            <div class="row">
-                              <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Info</label>
-                                  <textarea rows="15" name="eventInfo" class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="update ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary btn-round">Create Event</button>
-                              </div>
-                            </div>
-                          </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- event page end -->
-       
-
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card demo-icons">
+              <div class="card-header">
+                <h5 class="card-title">My Posts</h5>
+               
+              </div>
               <div class="card-body">
-                <div class="places-buttons">
-                  <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto text-center">
-                      <h4 class="card-title">
-                        Notifications Places
-                        <p class="category">Click to view notifications</p>
-                      </h4>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-8 ml-auto mr-auto">
-                      <div class="row">
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','left')">Top Left</button>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','center')">Top Center</button>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','right')">Top Right</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-8 ml-auto mr-auto">
-                      <div class="row">
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','left')">Bottom Left</button>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','center')">Bottom Center</button>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','right')">Bottom Right</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="row container ">
+                  <a class="btn btn-primary" style="color: white;" href="/NGO/myPosts/new">Create new post</a>
                 </div>
+                <% for( let post of posts) { %>
+                  <div class="card" style="margin-top: 20px;width: 70%;box-shadow: 10px 11px 16px -4px rgba(155,150,150,0.75);
+                  -webkit-box-shadow: 10px 11px 16px -4px rgba(155,150,150,0.75);
+                  -moz-box-shadow: 10px 11px 16px -4px rgba(155,150,150,0.75);">
+                      <div class="card-body">
+                          <div style="display: inline-block;margin-bottom: 10px;"><img src="<%= post.authorImg %>" style="height: 50px;width: 50px;border-radius: 50%;" alt=""></div>
+                        <h5 style="display: inline-block;margin-left: 10px;" class="card-title"><%= post.author %></h5>
+                        <h6><%= post.heading %></h6>
+                        <p style="font-size: 0.95em;" class="card-text"><%= post.text %></p>
+                        <p class="card-text"><small class="text-muted"><%= post.posted %></small></p>
+                      </div>
+                      <img src="<%= post.postImg %>" style="height: 300px;" class="card-img-bottom" alt="...">
+                    </div>
+                    <% } %>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -324,6 +222,52 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="/demo/demo.js"></script>
+  <script>
+    function SelectText(element) {
+      var doc = document,
+        text = element,
+        range, selection;
+      if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        range = document.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    }
+    window.onload = function() {
+      var iconsWrapper = document.getElementById('icons-wrapper'),
+        listItems = iconsWrapper.getElementsByTagName('li');
+      for (var i = 0; i < listItems.length; i++) {
+        listItems[i].onclick = function fun(event) {
+          var selectedTagName = event.target.tagName.toLowerCase();
+          if (selectedTagName == 'p' || selectedTagName == 'em') {
+            SelectText(event.target);
+          } else if (selectedTagName == 'input') {
+            event.target.setSelectionRange(0, event.target.value.length);
+          }
+        }
+
+        var beforeContentChar = window.getComputedStyle(listItems[i].getElementsByTagName('i')[0], '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, ""),
+          beforeContent = beforeContentChar.charCodeAt(0).toString(16);
+        var beforeContentElement = document.createElement("em");
+        beforeContentElement.textContent = "\\" + beforeContent;
+        listItems[i].appendChild(beforeContentElement);
+
+        //create input element to copy/paste chart
+        var charCharac = document.createElement('input');
+        charCharac.setAttribute('type', 'text');
+        charCharac.setAttribute('maxlength', '1');
+        charCharac.setAttribute('readonly', 'true');
+        charCharac.setAttribute('value', beforeContentChar);
+        listItems[i].appendChild(charCharac);
+      }
+    }
+  </script>
 </body>
 
 </html>
