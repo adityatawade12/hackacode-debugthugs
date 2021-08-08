@@ -299,6 +299,13 @@ const deleteVolunteer = (req,res) => {
     })
 }
 
+
+const renderChat=async(req,res)=>{
+   const ngo=await NGO.findOne({userId:req.user._id})
+    res.render("ngos/tables",{ngo:ngo.NgoName})
+}
+
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -320,5 +327,6 @@ module.exports = {
     updateEvent,
     deleteEvent,
     getMyposts,
-    createPostRender
+    createPostRender,
+    renderChat
 }
