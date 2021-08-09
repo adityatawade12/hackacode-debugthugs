@@ -17,5 +17,6 @@ It is no cost solution for NGOs to create a online presence, connect and chat wi
 - nodejs
 - socket.io
 - mongodb
+- fuse.js
 - google drive
 
