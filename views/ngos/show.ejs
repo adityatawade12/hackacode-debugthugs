@@ -57,21 +57,21 @@
                         </p>
                         <h4>Events</h4>
                         <div class="container">
-                            <div class="row">
+                            <div class="row" style="width: 100%;">
                                 <% ngo.events.forEach(function(e) {%>
-                                    <div class="col-12">
-                                        <div class="card" style="width: 100%">
+                                    <div class="col-lg-6" style="margin: 1em 0em;">
+                                        <div class="card" style="width: 100%;border: 1px solid brown;">
                                             <img src=<%=e.eventImage[0].link %>
-                                            class="card-img-top" alt="...">
+                                            class="card-img-top" alt="..."  height="200px">
                                             <div class="card-body">
                                                 <h3 class="card-title">
                                                     <%= e.name %>
                                                 </h3>
-                                                <p class="card-text">
+                                                <p class="card-text" style="font-size: 0.8em;">
                                                     <%= e.eventInfo %>
                                                 </p>
                                                 <h5 class="text-muted">
-                                                    <%= e.startDate %>-<%=e.endDate%>
+                                                    
                                                 </h5>
                                             </div>
                                         </div>

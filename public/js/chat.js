@@ -16,7 +16,7 @@ const userList = document.getElementById('users');
 //   ignoreQueryPrefix: true,
 // });
 // const username="asdsa"
-room=ngoname
+room="Aasha"
 const socket = io();
 
 // Join chatroom
