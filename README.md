@@ -48,3 +48,5 @@ It is no cost solution for NGOs to create a online presence, connect and chat wi
 
 ![image](https://user-images.githubusercontent.com/62465343/128685201-8b9b3fca-4db9-4d60-b6cd-cc2e52d0707a.png)
 
+### Video demonstration:
+https://youtu.be/QRzlnS_QqRI
