@@ -25,7 +25,7 @@ const VolunteerSchema = new Schema({
     },
     profilePic:{
         type:String,
-        default:''
+        default:'https://cdn.discordapp.com/attachments/872057355657969694/873964851498741821/Capture.PNG'
     }
 });
 

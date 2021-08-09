@@ -20,7 +20,7 @@
             </span>
             <br>
 
-            <span><button class="apply btn btn-success" style="width: 10em;"><a href="/volunteer/apply/<%= ngo.slug %>">Apply</a></button></span>
+            <span><a href="/volunteer/apply/<%= ngo.slug %>"><button class="apply btn btn-success" style="width: 10em;">Apply</button></a></span>
 
 
         </div>
@@ -29,9 +29,9 @@
                 <div class="col-4 p-1">
                     <h4>Upcoming Events:</h4>
                     <ul class="px-3" style="font-size: medium;">
-                        <li><a>Facebook</a></li>
-                        <li><a>Facebook</a></li>
-                        <li><a>Facebook</a></li>
+                        <% eventsC.forEach(function(e){ %>
+                        <li><%= e.name %></li>
+                        <% }) %>
                     </ul>
                     <hr>
                     <h4>Owner:</h4>
@@ -39,12 +39,15 @@
                         <%= ngo.owner %>
                     </h5>
                     <hr>
-                    <h4>Contact</h4>
+                    <h4>Past events</h4>
                     <ul class="px-3" style="font-size: medium;">
-                        <li><a>Facebook</a></li>
-                        <li><a>Facebook</a></li>
-                        <li><a>Facebook</a></li>
+                        <% eventsP.forEach(function(e){ %>
+                            <li><%= e.name %></li>
+                        <% }) %>
                     </ul>
+                    <br><br>
+                    <a href="/volunteer/chat"><button class="btn btn-success">Go to ChatRoom</button></a>
+
                 </div>
                 <div class="col-8 p-1 ps-5">
                     <div class="container">
@@ -54,26 +57,26 @@
                         </p>
                         <h4>Events</h4>
                         <div class="container">
-                            <div class="row">
-                                <% for(let event of ngo.events) {%>
-                                    <div class="col-6">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src=`<%=event.image %>`
-                                            class="card-img-top" alt="...">
+                            <div class="row" style="width: 100%;">
+                                <% ngo.events.forEach(function(e) {%>
+                                    <div class="col-lg-6" style="margin: 1em 0em;">
+                                        <div class="card" style="width: 100%;border: 1px solid brown;">
+                                            <img src=<%=e.eventImage[0].link %>
+                                            class="card-img-top" alt="..."  height="200px">
                                             <div class="card-body">
                                                 <h3 class="card-title">
-                                                    <%= event.name %>
+                                                    <%= e.name %>
                                                 </h3>
-                                                <p class="card-text">
-                                                    <%= event.eventInfo %>
+                                                <p class="card-text" style="font-size: 0.8em;">
+                                                    <%= e.eventInfo %>
                                                 </p>
                                                 <h5 class="text-muted">
-                                                    <%= event.startDate %>-<%=event.endDate%>
+                                                    
                                                 </h5>
                                             </div>
                                         </div>
                                     </div>
-                                    <% } %>
+                                    <% }) %>
                             </div>
                         </div>
                     </div>

@@ -57,7 +57,7 @@ const submitApplication = (req, res) => {
                     console.log(newApp);
                     newApp.save().
                         then(app => {
-                            res.status(200).json(app);
+                            res.redirect('/NGO')
                         }).catch(err => {
                             res.status(500).json(err)
                         })

@@ -37,6 +37,15 @@ const EventSchema = new Schema({
     logo:{
         type:String,
         default:''
+    },
+    address:{
+        type:String
+    },
+    city:{
+        type:String
+    },
+    state:{
+        type:String
     }
 });
 

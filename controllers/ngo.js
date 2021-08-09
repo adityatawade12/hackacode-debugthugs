@@ -17,9 +17,23 @@ const getNgos=(req,res)=>{
 }
 
 const getparticularNgo = (req,res) => {
-    NGO.findOne({slug:req.params.slug}).
+    console.log(req.user);
+    NGO.findOne({slug:req.params.slug}).populate('events').
     then(ngo=>{
-        res.render("ngos/show",{ ngo : ngo })
+
+        const e=ngo.events
+        console.log(e);
+        var eventC=[]
+        var eventP=[]
+        e.forEach(element => {
+            if(element.endDate<Date.now()){
+                eventP.push(element)
+            }else{
+                eventC.push(element)
+            }
+        });
+        console.log(ngo);
+        res.render("ngos/show",{ ngo : ngo, user: req.user,eventsC:eventC,eventsP:eventP})
     })
     .catch(err=>{
         res.status(500).json(err)
@@ -299,6 +313,13 @@ const deleteVolunteer = (req,res) => {
     })
 }
 
+
+const renderChat=async(req,res)=>{
+   const ngo=await NGO.findOne({userId:req.user._id})
+    res.render("ngos/tables",{ngo:ngo.NgoName,user:req.user})
+}
+
+
 module.exports = {
     getNgos,
     getparticularNgo,
@@ -320,5 +341,6 @@ module.exports = {
     updateEvent,
     deleteEvent,
     getMyposts,
-    createPostRender
+    createPostRender,
+    renderChat
 }

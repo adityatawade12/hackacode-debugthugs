@@ -1,0 +1,38 @@
+<% layout("layouts/boilerplate") %>
+
+
+    <link href="/css/chat.css" rel="stylesheet" />
+    
+
+    <div class="chat-container">
+        <!-- <header class="chat-header">
+          <h1><i class="fas fa-smile"></i> ChatCord</h1>
+          <a id="leave-btn" class="btn">Leave Room</a>
+        </header> -->
+        <main class="chat-main" style="height: 500px;">
+          <div class="chat-sidebar">
+            <h4><img src="https://img.icons8.com/material-sharp/48/ffffff/chat--v1.png" /> Room Name:</h4>
+            <h2 id="room-name"></h2>
+            <h4><img src="https://img.icons8.com/ios-glyphs/30/ffffff/group.png" /> Users</h4>
+            <ul id="users"></ul>
+          </div>
+          <div class="chat-messages"></div>
+        </main>
+        <div class="chat-form-container">
+          <form id="chat-form">
+            <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+            <button class="btn"><img src="https://img.icons8.com/ios-glyphs/30/4a90e2/filled-sent.png" />
+              Send</button>
+          </form>
+        </div>
+      </div>
+      <script src="/js/core/jquery.min.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var ngoname = 'namemychange'
+      </script>
+      <script src="/js/chat.js"></script>
+      
+</body>
+
+</html>
