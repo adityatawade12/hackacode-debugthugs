@@ -20,6 +20,10 @@ It is no cost solution for NGOs to create a online presence, connect and chat wi
 - fuse.js
 - google drive
 
+
+### Video demonstration:
+https://youtu.be/QRzlnS_QqRI
+
 ### Screenshots:
 ![image](https://user-images.githubusercontent.com/62465343/128684810-46b3686c-272f-4ce4-9962-308a4ac97d1c.png)
 
@@ -33,9 +37,11 @@ It is no cost solution for NGOs to create a online presence, connect and chat wi
 
 ![image](https://user-images.githubusercontent.com/62465343/128684955-e2b5ebf3-d8ca-4533-9ec7-a76570c43386.png)
 
-![image](https://user-images.githubusercontent.com/62465343/128684976-52c9ad3c-b8fd-4d6e-9168-e5fcfa10cfbc.png)
+
 
 ![image](https://user-images.githubusercontent.com/62465343/128685087-18a9678a-f39a-48c1-b14e-acde381407f2.png)
+![image](https://user-images.githubusercontent.com/62465343/128686715-b072542b-19dc-410e-9e75-74adaa21caac.png)
+
 
 
 
@@ -48,5 +54,4 @@ It is no cost solution for NGOs to create a online presence, connect and chat wi
 
 ![image](https://user-images.githubusercontent.com/62465343/128685201-8b9b3fca-4db9-4d60-b6cd-cc2e52d0707a.png)
 
-### Video demonstration:
-https://youtu.be/QRzlnS_QqRI
+![image](https://user-images.githubusercontent.com/62465343/128686282-09e8fdd8-a63c-4a33-aeb9-4603a67d9923.png)
